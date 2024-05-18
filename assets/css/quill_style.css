@@ -1,0 +1,159 @@
+/* Set default font-family */
+.ql-snow .ql-tooltip::before {
+    content: "Footnote";
+    line-height: 26px;
+    margin-right: 8px;
+}
+
+.ql-snow .ql-tooltip[data-mode=link]::before {
+    content: "Enter footnote:";
+}
+
+.row {
+    margin-top: 15px;
+    margin-left: 0px;
+    margin-bottom: 15px;
+}
+
+.btn-primary {
+    color: #ffffff;
+    background-color: #2780e3;
+    border-color: #2780e3;
+}
+
+.btn-primary:hover {
+    color: #ffffff;
+    background-color: #1967be;
+    border-color: #1862b5;
+}
+
+.btn {
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: normal;
+    text-align: center;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 10px 18px;
+    font-size: 15px;
+    line-height: 1.42857143;
+    border-radius: 0;
+    user-select: none;
+}
+
+#standalone-container {
+    margin: 50px auto;
+    max-width: 720px;
+}
+
+#editor-container {
+    font-family: "Aref Ruqaa";
+    font-size: 18px;
+    height: 100px;
+}
+
+#toolbar-container {
+    font-family: "Aref Ruqaa";
+    height: 40px;
+}
+
+#json-container {
+    max-width: 720px;
+}
+
+/* Set dropdown font-families */
+#toolbar-container .ql-font span[data-label="Base"]::before {
+    font-family: "Aref Ruqaa";
+}
+
+#toolbar-container .ql-font span[data-label="Claude Monet"]::before {
+    font-family: "Mirza";
+}
+
+#toolbar-container .ql-font span[data-label="Ukiyoe"]::before {
+    font-family: "Roboto";
+}
+
+#toolbar-container .ql-font span[data-label="Cyber Punk"]::before {
+    font-family: "Comic Sans MS";
+}
+
+#toolbar-container .ql-font span[data-label="Pop Art"]::before {
+    font-family: "sofia";
+}
+
+#toolbar-container .ql-font span[data-label="Van Gogh"]::before {
+    font-family: "slabo 27px";
+}
+
+#toolbar-container .ql-font span[data-label="Pixel Art"]::before {
+    font-family: "inconsolata";
+}
+
+#toolbar-container .ql-font span[data-label="Rembrandt"]::before {
+    font-family: "ubuntu";
+}
+
+#toolbar-container .ql-font span[data-label="Cubism"]::before {
+    font-family: "Akronim";
+}
+
+#toolbar-container .ql-font span[data-label="Neon Art"]::before {
+    font-family: "Monoton";
+}
+
+/* Set content font-families */
+.ql-font-mirza {
+    font-family: "Mirza";
+}
+
+.ql-font-roboto {
+    font-family: "Roboto";
+}
+
+.ql-font-cursive {
+    font-family: "Comic Sans MS";
+}
+
+.ql-font-sofia {
+    font-family: "sofia";
+}
+
+.ql-font-slabo {
+    font-family: "slabo 27px";
+}
+
+.ql-font-inconsolata {
+    font-family: "inconsolata";
+}
+
+.ql-font-ubuntu {
+    font-family: "ubuntu";
+}
+
+.ql-font-Akronim {
+    font-family: "Akronim";
+}
+
+.ql-font-Monoton {
+    font-family: "Monoton";
+}
+
+.ql-color .ql-picker-options [data-value=Color-Picker] {
+    background: none !important;
+    width: 100% !important;
+    height: 20px !important;
+    text-align: center;
+}
+
+.ql-color .ql-picker-options [data-value=Color-Picker]:before {
+    content: 'Color Picker';
+}
+
+.ql-color .ql-picker-options [data-value=Color-Picker]:hover {
+    border-color: transparent !important;
+}

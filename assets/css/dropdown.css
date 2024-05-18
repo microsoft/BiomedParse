@@ -1,0 +1,55 @@
+#imageSelector {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.image-container {
+    display: flex;
+    justify-content: space-around; /* Centers the images with equal space around */
+    align-items: center; /* Vertically centers the images if they have different heights */
+    gap: 0px; /* Space between images */
+    flex-wrap: nowrap !important;
+}
+
+.image-container img {
+    max-width: 80%; /* Adjust as needed, this makes sure both images fit side by side */
+    height: auto;
+}
+figcaption {
+    text-align: center;
+    font-weight: bold; /* This makes the caption bold */
+    margin-top: 10px; /* Adds a bit of space between the image and the caption */
+}
+
+#medjourneyLogoUI {
+    max-width: 80%;
+    padding-bottom: 5px;
+}
+
+#toggleAttention {
+    margin-right: 2%;
+    width: 200px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
+}
+
+@media only screen and (max-width: 600px) {
+    .image-container {
+        font-size: x-small;
+    }
+
+    #medjourneyLogoUI {
+        max-width: 100px;
+    }
+
+    #toggleAttention {
+        width: 100px;
+    }
+
+    figcaption {
+        min-height: 30px;
+    }
+}
