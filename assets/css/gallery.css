@@ -31,7 +31,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 128, 0.4); /* Navy color with transparency */
+    background-color: rgba(99, 102, 241, 0.35); /* Navy color with transparency */ 
     display: flex;
     justify-content: center;
     align-items: center;
