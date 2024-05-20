@@ -1,0 +1,47 @@
+.gallery {
+    width: 100%; /* Set the visible width of the gallery */
+    height: 20%;
+    overflow: hidden; /* Hides anything outside this container */
+    position: relative;
+}
+
+.image-row {
+    display: flex;
+    white-space: nowrap; /* Ensures images stay in a single line */
+    animation: scroll infinite 5s linear; /* Adjust '30s' to control speed */
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-16%); /* Moves by one-third since three sets are used */
+    }
+}
+
+.gallery img {
+    width: 10%; /* Adjust depending on the number of images visible at once */
+    height: auto;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 128, 0.4); /* Navy color with transparency */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2; /* Ensures overlay is above the images but below the text */
+}
+
+.caption {
+    font-size: 3em; /* Adjust size as needed */
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    z-index: 3; /* Ensures text is on top of the overlay */
+}
