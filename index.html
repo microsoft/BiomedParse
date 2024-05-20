@@ -173,16 +173,15 @@
 </section>
 
 <!-- teaser animation -->
-<section class="hero teaser">
+<!-- <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <!-- <h2 class="title is-3">BiomedJourney</h2> -->
     	<div class="gif-container" style="display: flex; justify-content: center; align-items: center; width: 100%;">
     	    <img src="image_assets/gif_demo/CT-Abdomen.gif" alt="Animated GIF to illustrate BiomedJourney capability. Given a previous radiology image and text instruction, BiomedJourney generates a new counterfactual radiology image." style="width: 100%; max-width: 100%; height: auto;">
     	</div>
     </div>
   </div>
-</section>
+</section> -->
 
 <div class="gallery">
   <div class="overlay">
@@ -239,12 +238,57 @@
   </div>
 </div>
   <!-- Examples. -->
+
+
+<!-- sections for segmentation, detection, recognition -->
+<section class="section" id="segmentation" style="display: flex;  justify-content: space-between;align-items: center; margin:5%;">
+  <!-- left be caption and right be video -->
+  <div class="text-section" style="width: 40%;">
+    <h1 style="font-size: 2em;">Everything</h1>
+    <p>On image <a href="#" style="color: #6366f1;"><strong>segmentation</strong></a>, we showed that BiomedParse is broadly applicable, outperforming state-of-the-art methods on 102,855 test image-mask-label triples across 9 imaging modalities.</p>
+</div>
+<div class="video-section" style="width: 60%;">
+    <video autoplay loop muted>
+        <source src="./image_assets/video_demo/Demo-example3.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</div>
+</section>
+
+<section class="section" id="detection" style="display: flex;  justify-content: space-between;align-items: center; margin:5%;">
+  <!-- left be caption and right be video -->
+  <div class="text-section" style="width: 40%;">
+    <h1 style="font-size: 2em;">Everywhere</h1>
+    <p>BiomedParse is also able to identify invalid user inputs describing objects that do not exist in the image. On object <a href="#" style="color: #6366f1;""><strong>detection</strong></a>, which aims to locate a specific object of interest, BiomedParse again attained state-of-the-art performance, especially on objects with irregular shapes.</p>
+</div>
+<div class="video-section" style="width: 60%;">
+    <video autoplay loop muted>
+        <source src="./image_assets/video_demo/Demo-example3.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</div>
+</section>
+
+<section class="section" id="recognition" style="display: flex;  justify-content: space-between;align-items: center; margin:5%;">
+  <!-- left be caption and right be video -->
+  <div class="text-section" style="width: 40%;">
+    <h1 style="font-size: 2em;">All at Once</h1>
+    <p>On object <a href="#" style="color: #6366f1;""><strong>recognition</strong></a>, which aims to identify all objects in a given image along with their semantic types, we showed that \ourmethod can simultaneously segment and label all biomedical objects in an image without any user-provided input</p>
+</div>
+<div class="video-section" style="width: 60%;">
+    <video autoplay loop muted>
+        <source src="./image_assets/video_demo/Demo-example3.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</div>
+</section>
+
 <section class="hero is-small" style="padding: 0">
   <div class="hero-body">
     <div class="container is-max-desktop has-text-centered">
       <!-- <h2 class="title is-3">BiomedJourney-Image-to-image Generation</h2> -->
       <div class="has-text-justified">
-        <h2 class="title is-3 has-text-centered">One Model for 9 Imaging Modalities</h2>
+        <h2 class="title is-3 has-text-centered">Examples</h2>
         <!-- <p>
           todo
         </p> -->
@@ -520,10 +564,10 @@
   <div class="container is-max-desktop">
     <!-- Abstract. -->
     <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
+      <div class="column ">
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
-          <p>Biomedical image analysis is fundamental for biomedical discovery in cell biology, pathology, radiology, and many other biomedical domains. Holistic image analysis comprises multiple interdependent subtasks such as segmentation, object detection, and recognition. Traditionally, these tasks are tackled separately. E.g., there have been a lot of works focusing on segmentation alone, without incorporating key semantic information in downstream tasks of detection and recognition. In contrast, image parsing is a unifying framework that jointly pursues these tasks by leveraging their interdependencies such as the semantic label for a segmented object. Here, we propose BiomedParse, a biomedical foundation model for imaging parsing that can jointly conduct segmentation, detection, and recognition for 82 object types across 9 imaging modalities. Through joint learning, we can improve accuracy for individual tasks and enable novel applications such as segmenting all relevant objects in an image through a text prompt, rather than requiring users to laboriously specify the bounding box for each object. Interestingly, we can train BiomedParse using no more than standard segmentation datasets. The key is to leverage readily available natural-language labels or descriptions accompanying those datasets and use GPT-4 to harmonize the noisy, unstructured text information with established biomedical object ontologies. We collected a large dataset comprising 6.77 million triplets of image, segmentation mask, and textual description. On image segmentation, we showed that BiomedParse is broadly applicable, outperforming state-of-the-art methods on 102,855 test images across 9 imaging modalities (<strong><i>everything</i></strong>). BiomedParse is also able to identify invalid user inputs describing objects that do not exist in the image. On object detection, which aims to locate a specific object of interest, BiomedParse again attained state-of-the-art performance, especially on objects with irregular shapes (<strong><i>everywhere</i></strong>). On object recognition, which aims to identify all objects in a given image along with their semantic types, we showed that BiomedParse can simultaneously segment and label all biomedical objects in an image without any user-provided input (<strong><i>all at once</i></strong>). In summary, BiomedParse is an all-in-one tool for biomedical image analysis by jointly solving segmentation, detection, and recognition. It is broadly applicable to 9 image modalities, paving the path for efficient and accurate image-based biomedical discovery.</p>
+          <p>Biomedical image analysis is fundamental for biomedical discovery in cell biology, pathology, radiology, and many other biomedical domains. Holistic image analysis comprises multiple interdependent subtasks such as segmentation, object detection, and recognition. Traditionally, these tasks are tackled separately. E.g., there have been a lot of works focusing on segmentation alone, without incorporating key semantic information in downstream tasks of detection and recognition. In contrast, image parsing is a unifying framework that jointly pursues these tasks by leveraging their interdependencies such as the semantic label for a segmented object. Here, we propose BiomedParse, a biomedical foundation model for imaging parsing that can jointly conduct segmentation, detection, and recognition for 82 object types across 9 imaging modalities. Through joint learning, we can improve accuracy for individual tasks and enable novel applications such as segmenting all relevant objects in an image through a text prompt, rather than requiring users to laboriously specify the bounding box for each object. Interestingly, we can train BiomedParse using no more than standard segmentation datasets. The key is to leverage readily available natural-language labels or descriptions accompanying those datasets and use GPT-4 to harmonize the noisy, unstructured text information with established biomedical object ontologies. We collected a large dataset comprising 6.77 million triplets of image, segmentation mask, and textual description. On image segmentation, we showed that BiomedParse is broadly applicable, outperforming state-of-the-art methods on 102,855 test images across 9 imaging modalities (<strong style="color: #6366f1;"><i>everything</i></strong>). BiomedParse is also able to identify invalid user inputs describing objects that do not exist in the image. On object detection, which aims to locate a specific object of interest, BiomedParse again attained state-of-the-art performance, especially on objects with irregular shapes (<strong style="color: #6366f1;"><i>everywhere</i></strong>). On object recognition, which aims to identify all objects in a given image along with their semantic types, we showed that BiomedParse can simultaneously segment and label all biomedical objects in an image without any user-provided input (<strong style="color: #6366f1;"><i>all at once</i></strong>). In summary, BiomedParse is an all-in-one tool for biomedical image analysis by jointly solving segmentation, detection, and recognition. It is broadly applicable to 9 image modalities, paving the path for efficient and accurate image-based biomedical discovery.</p>
         </div>
       </div>
     </div>
@@ -565,17 +609,17 @@
 
         <div class="content has-text-justified">
             <ul type="circle">
-              <li><a href="https://arxiv.org/pdf/2304.06718.pdf" style="color: #1565c0; text-decoration: underline;">SEEM: Segment Everything Everywhere All at Once</a> by Xueyan Zou*, Jianwei Yang*, Hao Zhang*, Feng Li*, Linjie Li, Jianfeng Wang, Lijuan Wang, Jianfeng Gao^, Yong Jae Lee^</li>
+              <li><a href="https://arxiv.org/pdf/2304.06718.pdf" style="color: #6366f1; text-decoration: underline;">SEEM: Segment Everything Everywhere All at Once</a> by Xueyan Zou*, Jianwei Yang*, Hao Zhang*, Feng Li*, Linjie Li, Jianfeng Wang, Lijuan Wang, Jianfeng Gao^, Yong Jae Lee^</li>
             </ol>
-            <li><a href="https://arxiv.org/pdf/2212.11270.pdf" style="color: #1565c0; text-decoration: underline;">X-Decoder: Generalized Decoding for Pixel, Image, and Language</a> by Xueyan Zou*, Zi-Yi Dou*, Jianwei Yang*, Zhe Gan, Linjie Li, Chunyuan Li, Xiyang Dai, Harkirat Behl, Jianfeng Wang, Lu Yuan, Nanyun Peng, Lijuan Wang, Yong Jae Lee^, Jianfeng Gao^</li>
+            <li><a href="https://arxiv.org/pdf/2212.11270.pdf" style="color: #6366f1; text-decoration: underline;">X-Decoder: Generalized Decoding for Pixel, Image, and Language</a> by Xueyan Zou*, Zi-Yi Dou*, Jianwei Yang*, Zhe Gan, Linjie Li, Chunyuan Li, Xiyang Dai, Harkirat Behl, Jianfeng Wang, Lu Yuan, Nanyun Peng, Lijuan Wang, Yong Jae Lee^, Jianfeng Gao^</li>
           </ol>
-          <li><a href="https://arxiv.org/abs/2203.11926" style="color: #1565c0; text-decoration: underline;">Focal Modulation Networks</a> by Jianwei Yang, Chunyuan Li, Xiyang Dai, Lu Yuan and Jianfeng Gao.</li>
+          <li><a href="https://arxiv.org/abs/2203.11926" style="color: #6366f1; text-decoration: underline;">Focal Modulation Networks</a> by Jianwei Yang, Chunyuan Li, Xiyang Dai, Lu Yuan and Jianfeng Gao.</li>
         </ol>
-        <li><a href="https://arxiv.org/pdf/2007.15779" style="color: #1565c0; text-decoration: underline;">Domain-Specific Language Model Pretraining for Biomedical Natural Language Processing</a> by Yu Gu, Robert Tinn, Hao Cheng, Michael Lucas, Naoto Usuyama, Xiaodong Liu, Tristan Naumann, Jianfeng Gao, Hoifung Poon.</li>
+        <li><a href="https://arxiv.org/pdf/2007.15779" style="color: #6366f1; text-decoration: underline;">Domain-Specific Language Model Pretraining for Biomedical Natural Language Processing</a> by Yu Gu, Robert Tinn, Hao Cheng, Michael Lucas, Naoto Usuyama, Xiaodong Liu, Tristan Naumann, Jianfeng Gao, Hoifung Poon.</li>
       </ol>
-      <li><a href="https://arxiv.org/pdf/2007.15779" style="color: #1565c0; text-decoration: underline;">BiomedCLIP: a multimodal biomedical foundation model pretrained from fifteen million scientific image-text pairs</a> by Sheng Zhang, Yanbo Xu, Naoto Usuyama, Hanwen Xu, Jaspreet Bagga, Robert Tinn, Sam Preston, Rajesh Rao, Mu Wei, Naveen Valluri, Cliff Wong, Andrea Tupini, Yu Wang, Matt Mazzola, Swadheen Shukla, Lars Liden, Jianfeng Gao, Matthew P. Lungren, Tristan Naumann, Sheng Wang, Hoifung Poon.</li>
+      <li><a href="https://arxiv.org/pdf/2007.15779" style="color: #6366f1; text-decoration: underline;">BiomedCLIP: a multimodal biomedical foundation model pretrained from fifteen million scientific image-text pairs</a> by Sheng Zhang, Yanbo Xu, Naoto Usuyama, Hanwen Xu, Jaspreet Bagga, Robert Tinn, Sam Preston, Rajesh Rao, Mu Wei, Naveen Valluri, Cliff Wong, Andrea Tupini, Yu Wang, Matt Mazzola, Swadheen Shukla, Lars Liden, Jianfeng Gao, Matthew P. Lungren, Tristan Naumann, Sheng Wang, Hoifung Poon.</li>
     </ol>
-    <li><a href="https://arxiv.org/abs/2310.10765" style="color: #1565c0; text-decoration: underline;">BiomedJourney: Counterfactual Biomedical Image Generation by Instruction-Learning from Multimodal Patient Journeys</a> by Yu Gu, Jianwei Yang, Naoto Usuyama, Chunyuan Li, Sheng Zhang, Matthew P. Lungren, Jianfeng Gao, Hoifung Poon.</li>
+    <li><a href="https://arxiv.org/abs/2310.10765" style="color: #6366f1; text-decoration: underline;">BiomedJourney: Counterfactual Biomedical Image Generation by Instruction-Learning from Multimodal Patient Journeys</a> by Yu Gu, Jianwei Yang, Naoto Usuyama, Chunyuan Li, Sheng Zhang, Matthew P. Lungren, Jianfeng Gao, Hoifung Poon.</li>
         </div>
       </div>
     </div>
