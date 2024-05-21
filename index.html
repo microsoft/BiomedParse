@@ -228,43 +228,32 @@
 </div>
   <!-- Examples. -->
 
+<section class="section" id="segmentation" style="display: flex; justify-content: space-between; align-items: center; margin:5%;">
+  <!-- Left side: Caption -->
+  <div class="text-section" style="width: 40%; padding: 5%">
+      <h1 style="font-size: 2em;">Everything</h1>
+      <p>On image <a href="#" style="color: #6366f1;"><strong>segmentation</strong></a>, we showed that BiomedParse is broadly applicable, outperforming state-of-the-art methods on 102,855 test image-mask-label triples across 9 imaging modalities.</p>
+  </div>
 
-<!-- sections for segmentation, detection, recognition -->
-<section class="section" id="segmentation" style="display: flex;  justify-content: space-between;align-items: center; margin:5%;">
-  <!-- left be caption and right be video -->
-  <div class="text-section" style="width: 34%; padding: 1%">
-    <h1 style="font-size: 2em;">Everything</h1>
-    <p>On image <a href="#" style="color: #6366f1;"><strong>segmentation</strong></a>, we showed that BiomedParse is broadly applicable, outperforming state-of-the-art methods on 102,855 test image-mask-label triples across 9 imaging modalities.</p>
-</div>
-<div class="video-section" style="width: 33%; ">
-    <video autoplay loop muted>
-        <source src="./image_assets/video_demo/MRI-Brain-T1Gd.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-</div>
-<div class="video-section" style="width: 33%;">
-  <video autoplay loop muted>
-      <source src="./image_assets/video_demo/Pathology_prompts.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-  </video>
-</div>
+  <!-- Right side: Single Video section -->
+  <div class="video-section" style="width: 55%; ">
+      <video id="videoPlayer1" width="100%" autoplay muted>
+          <source src="./image_assets/video_demo/MRI-Brain-T1Gd.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+      </video>
+  </div>
 </section>
 
+  
 <section class="section" id="detection" style="display: flex; justify-content: space-between;align-items: center; margin:5%;">
   <!-- left be caption and right be video -->
-  <div class="text-section" style="width: 34%; padding: 1%">
+  <div class="text-section" style="width: 40%; padding: 5%">
     <h1 style="font-size: 2em;">Everywhere</h1>
     <p>BiomedParse is also able to identify invalid user inputs describing objects that do not exist in the image. On object <a href="#" style="color: #6366f1;""><strong>detection</strong></a>, which aims to locate a specific object of interest, BiomedParse again attained state-of-the-art performance, especially on objects with irregular shapes.</p>
 </div>
-<div class="video-section" style="width: 33%;">
-    <video autoplay loop muted>
-        <source src="./image_assets/video_demo/CT-Abdomen_short.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-</div>
-<div class="video-section" style="width: 33%;">
-  <video autoplay loop muted>
-      <source src="./image_assets/video_demo/Pathology_all_cells.mp4" type="video/mp4">
+<div class="video-section" style="width: 55%; ">
+  <video id="videoPlayer2" width="100%" autoplay muted>
+      <source src="./image_assets/video_demo/MRI-Brain-T1Gd.mp4" type="video/mp4">
       Your browser does not support the video tag.
   </video>
 </div>
@@ -272,23 +261,47 @@
 
 <section class="section" id="recognition" style="display: flex;  justify-content: space-between;align-items: center; margin:5%;">
   <!-- left be caption and right be video -->
-  <div class="text-section" style="width: 34%; padding: 1%">
-    <h1 style="font-size: 2em;">All at Once</h1>
-    <p>On object <a href="#" style="color: #6366f1;""><strong>recognition</strong></a>, which aims to identify all objects in a given image along with their semantic types, we showed that BiomedParse can simultaneously segment and label all biomedical objects in an image without any user-provided input</p>
+  <div class="text-section" style="width: 40%; padding: 5%">
+    <h1 style="font-size: 2rem;">All at Once</h1>
+    <p>On object <a href="#" style="color: #6366f1;""><strong>recognition</strong></a>, which aims to identify all objects in a given image along with their semantic types, we showed that BiomedParse can simultaneously segment and label all biomedical objects in an image.</p>
 </div>
-<div class="video-section" style="width: 33%;">
-  <video autoplay loop muted>
-      <source src="./image_assets/video_demo/Cat.mp4" type="video/mp4">
+<div class="video-section" style="width: 55%; ">
+  <video id="videoPlayer3" width="100%" autoplay muted>
+      <source src="./image_assets/video_demo/MRI-Brain-T1Gd.mp4" type="video/mp4">
       Your browser does not support the video tag.
   </video>
-</div>
-<div class="video-section" style="width: 33%;">
-<video autoplay loop muted>
-    <source src="./image_assets/video_demo/CT-nodule.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-</video>
-</div>
 </section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+      // Array of arrays, each containing video URLs for each player
+      var allVideos = [
+      [
+      './image_assets/video_demo/MRI-Brain-T1Gd.mp4',
+      './image_assets/video_demo/Pathology_prompts.mp4'
+      ],
+      ["./image_assets/video_demo/Cat.mp4",
+      "./image_assets/video_demo/CT-nodule.mp4"
+      ],
+      ["./image_assets/video_demo/CT-Abdomen_short.mp4",
+      "./image_assets/video_demo/Pathology_all_cells.mp4"
+      ],
+      ];
+  
+      allVideos.forEach(function(videos, index) {
+          var player = document.getElementById('videoPlayer' + (index + 1)); // Get each player by id
+          var currentVideo = 0;
+          player.src = videos[currentVideo]; // Set initial source
+  
+          player.addEventListener('ended', function() {
+              currentVideo = (currentVideo + 1) % videos.length; // Loop through videos
+              player.src = videos[currentVideo];
+              player.load(); // Load the new video file
+              player.play(); // Play the new video
+          });
+      });
+  });
+  </script>
 
 <section class="hero is-small" style="padding: 0">
   <div class="hero-body">
