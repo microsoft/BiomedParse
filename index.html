@@ -78,7 +78,7 @@
           </h2>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
-              <a href="https://scholar.google.com/citations?user=Ftyui_wAAAAJ&hl=en&oi=ao">Theodore Zhao</a><sup>*♦1</sup>,
+              <a href="https://scholar.google.com/citations?user=Ftyui_wAAAAJ&hl=en&oi=ao">Theodore Zhao</a><sup>*¶♦1</sup>,
               <a href="https://scholar.google.com/citations?user=1PoaURIAAAAJ">Yu Gu</a><sup>*1</sup>,
               <a href="https://jwyang.github.io/">Jianwei Yang</a><sup>1</sup>,
               <a href="https://www.microsoft.com/en-us/research/people/naotous/">Naoto Usuyama</a><sup>1</sup>,
@@ -104,6 +104,7 @@
           </div>
           <div class="is-size-6 publication-authors">
             <span class="author-block"><sup>*</sup> Equal Contribution</span>
+            <span class="author-block"><sup>¶</sup> Main technical Contribution</span>
             <span class="author-block"><sup>♦</sup> Project lead </span>
             <span class="author-block"><sup>§</sup> Lead contact</span>
             <span class="author-block"><sup>‡</sup> Corresponding authors</span>
@@ -237,13 +238,13 @@
     <h1 style="font-size: 2em;">Everything</h1>
     <p>On image <a href="#" style="color: #6366f1;"><strong>segmentation</strong></a>, we showed that BiomedParse is broadly applicable, outperforming state-of-the-art methods on 102,855 test image-mask-label triples across 9 imaging modalities.</p>
 </div>
-<div class="video-section" style="width: 33%; ">
+<div class="video-section" style="width: 66%; ">
     <video autoplay loop muted>
         <source src="./image_assets/video_demo/MRI-Brain-T1Gd.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
 </div>
-<div class="video-section" style="width: 33%;">
+<div class="video-section" style="width: 66%;">
   <video autoplay loop muted>
       <source src="./image_assets/video_demo/Pathology_prompts.mp4" type="video/mp4">
       Your browser does not support the video tag.
@@ -257,15 +258,15 @@
     <h1 style="font-size: 2em;">Everywhere</h1>
     <p>BiomedParse is also able to identify invalid user inputs describing objects that do not exist in the image. On object <a href="#" style="color: #6366f1;""><strong>detection</strong></a>, which aims to locate a specific object of interest, BiomedParse again attained state-of-the-art performance, especially on objects with irregular shapes.</p>
 </div>
-<div class="video-section" style="width: 33%;">
+<div class="video-section" style="width: 66%;">
     <video autoplay loop muted>
-        <source src="./image_assets/video_demo/CT-Abdomen_short.mp4" type="video/mp4">
+        <source src="./image_assets/video_demo/CT-nodule.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
 </div>
-<div class="video-section" style="width: 33%;">
+<div class="video-section" style="width: 66%;">
   <video autoplay loop muted>
-      <source src="./image_assets/video_demo/Pathology_all_cells.mp4" type="video/mp4">
+      <source src="./image_assets/video_demo/CT-COVID.mp4" type="video/mp4">
       Your browser does not support the video tag.
   </video>
 </div>
@@ -277,15 +278,15 @@
     <h1 style="font-size: 2em;">All at Once</h1>
     <p>On object <a href="#" style="color: #6366f1;""><strong>recognition</strong></a>, which aims to identify all objects in a given image along with their semantic types, we showed that BiomedParse can simultaneously segment and label all biomedical objects in an image without any user-provided input</p>
 </div>
-<div class="video-section" style="width: 33%;">
+<div class="video-section" style="width: 66%;">
   <video autoplay loop muted>
-      <source src="./image_assets/video_demo/Cat.mp4" type="video/mp4">
+      <source src="./image_assets/video_demo/CT-Abdomen_short.mp4" type="video/mp4">
       Your browser does not support the video tag.
   </video>
 </div>
-<div class="video-section" style="width: 33%;">
+<div class="video-section" style="width: 66%;">
 <video autoplay loop muted>
-    <source src="./image_assets/video_demo/CT-nodule.mp4" type="video/mp4">
+    <source src="./image_assets/video_demo/Pathology_all_cells.mp4" type="video/mp4">
     Your browser does not support the video tag.
 </video>
 </div>
@@ -296,7 +297,7 @@
     <div class="container is-max-desktop has-text-centered">
       <!-- <h2 class="title is-3">BiomedJourney-Image-to-image Generation</h2> -->
       <div class="has-text-justified">
-        <h2 class="title is-3 has-text-centered">Examples</h2>
+        <h2 class="title is-3 has-text-centered">One model, 9 imaging modalities</h2>
         <!-- <p>
           todo
         </p> -->
@@ -337,7 +338,7 @@
 
           <div class="has-text-justified">
             <p>
-              <span style="font-family:roboto; ">"Glandular structure in colon <strong>pathology</strong>"</span>
+              <span style="font-family:roboto; ">"Glandular structure in colon <strong>Pathology</strong>"</span>
 
             </p>
           </div>
@@ -364,7 +365,35 @@
             </div>
           </div>
           
+          <div class="has-text-justified">
+            <p>
+              <span style="font-family:roboto; ">"Neoplastic polyp in colon <strong>Endoscope</strong>"</span>
 
+            </p>
+          </div>
+          <div class="content">
+            <div class="tab_container">
+              <div id="juxtapose-embed1" data-startingposition="30%" data-animate="true" class="juxtapose">
+                <div class="jx-slider">
+                  <div class="jx-handle " style="left: 54.53%;">
+                    <div class="jx-arrow jx-left"></div>
+                    <div class="jx-control">
+                      <div class="jx-controller" tabindex="0" role="slider" aria-valuenow="50" aria-valuemin="0"
+                        aria-valuemax="100" aria-label="Image juxtapose slider"></div>
+                    </div>
+                    <div class="jx-arrow jx-right"></div>
+                  </div>
+                  <div class="jx-image jx-left " style="width: 54.53%;">
+                    <img src="./image_assets/image_demo/d260bfcb4443de3ef69f6db034099130_endoscope_colon.png" alt="" data-label="Raw-Image">
+                  </div>
+                  <div class="jx-image jx-right " style="width: 45.47%;">
+                    <img src="./image_assets/image_demo/d260bfcb4443de3ef69f6db034099130_endoscope_colon_neoplastic+polyp_neoplastic+polyp+in+colon+endoscope_dice99_box78_convex100_IRI99.png" alt="" data-label="BiomedParse">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
 
           <!--
           <div class="content">
@@ -424,7 +453,7 @@
 
           <div class="has-text-justified">
             <p>
-              <span style="font-family:roboto; ">"Malignant tumor in breast <strong>ultrasound</strong>"</span>
+              <span style="font-family:roboto; ">"Malignant tumor in breast <strong>Ultrasound</strong>"</span>
             </p>
           </div>
           <div class="content">
@@ -449,6 +478,38 @@
               </div>
             </div>
           </div>
+
+
+          <div class="has-text-justified">
+            <p>
+              <span style="font-family:roboto; ">"Melanoma in skin <strong>Dermoscopy</strong>"</span>
+
+            </p>
+          </div>
+          <div class="content">
+            <div class="tab_container">
+              <div id="juxtapose-embed1" data-startingposition="30%" data-animate="true" class="juxtapose">
+                <div class="jx-slider">
+                  <div class="jx-handle " style="left: 54.53%;">
+                    <div class="jx-arrow jx-left"></div>
+                    <div class="jx-control">
+                      <div class="jx-controller" tabindex="0" role="slider" aria-valuenow="50" aria-valuemin="0"
+                        aria-valuemax="100" aria-label="Image juxtapose slider"></div>
+                    </div>
+                    <div class="jx-arrow jx-right"></div>
+                  </div>
+                  <div class="jx-image jx-left " style="width: 54.53%;">
+                    <img src="./image_assets/image_demo/dermIS_SSM27_dermoscopy_skin.png" alt="" data-label="Raw-Image">
+                  </div>
+                  <div class="jx-image jx-right " style="width: 45.47%;">
+                    <img src="./image_assets/image_demo/dermIS_SSM27_dermoscopy_skin_melanoma_melanoma+in+skin+dermoscope_dice98_box71_convex97_IRI90.png" alt="" data-label="BiomedParse">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+
 
           <!--
           <div class="content">
@@ -534,7 +595,35 @@
             </div>
           </div>
 
+          <div class="has-text-justified">
+            <p>
+              <span style="font-family:roboto; ">"Cystoid macular edema in retinal <strong>OCT</strong>"</span>
 
+            </p>
+          </div>
+          <div class="content">
+            <div class="tab_container">
+              <div id="juxtapose-embed1" data-startingposition="30%" data-animate="true" class="juxtapose">
+                <div class="jx-slider">
+                  <div class="jx-handle " style="left: 54.53%;">
+                    <div class="jx-arrow jx-left"></div>
+                    <div class="jx-control">
+                      <div class="jx-controller" tabindex="0" role="slider" aria-valuenow="50" aria-valuemin="0"
+                        aria-valuemax="100" aria-label="Image juxtapose slider"></div>
+                    </div>
+                    <div class="jx-arrow jx-right"></div>
+                  </div>
+                  <div class="jx-image jx-left " style="width: 54.53%;">
+                    <img src="./image_assets/image_demo/28DME_as_F_OCT_retinal.png" alt="" data-label="Raw-Image">
+                  </div>
+                  <div class="jx-image jx-right " style="width: 45.47%;">
+                    <img src="./image_assets/image_demo/28DME_as_F_OCT_retinal_edema_edema+in+retinal+OCT_dice91_box27_convex43_IRI46.png" alt="" data-label="BiomedParse">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
 
           <!--
           <div class="content">
