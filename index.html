@@ -267,6 +267,21 @@
     }
 }
 </style> 
+
+<!-- JavaScript for ensuring autoplay on mobile devices -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var videos = document.querySelectorAll('video[autoplay]');
+    videos.forEach(function(video) {
+      video.play().catch(function(error) {
+        console.log('Autoplay was prevented: ', error);
+      });
+    });
+  });
+</script>
+
+
+
 <section class="section columns_video" id="detection" style="display: flex; justify-content: space-between;align-items: center; margin:5%;">
   <!-- left be caption and right be video -->
   <div class="text-section col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6" style="padding: 5%;">
