@@ -175,7 +175,7 @@
 
 <div class="gallery">
   <div class="overlay">
-      <div class="caption">Everything Everywhere All at Once</div>
+      <div class="caption" style="font-size: 4vw;">Everything Everywhere All at Once</div>
   </div>
   <!-- Row 1 -->
   <div class="image-row">
@@ -229,15 +229,15 @@
 </div>
   <!-- Examples. -->
 
-<section class="section" id="segmentation" style="display: flex; justify-content: space-between; align-items: center; margin:5%;">
+<section class="section columns_video" id="segmentation" style="display: flex; justify-content: space-between; align-items: center; margin:5%;">
   <!-- Left side: Caption -->
-  <div class="text-section" style="width: 40%; padding: 5%">
+  <div class="text-section col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
       <h1 style="font-size: 2em;">Everything</h1>
       <p>BiomedParse performs <a href="#" style="color: #6366f1;"><strong>segmentation</strong></a> for organ, abnormality and cells, accurately following user's prompts. Without any image specific guidance like bounding box or points, BiomedParse outperforms state-of-the-art bounding box methods with text prompts only, across 9 biomedical imaging modalities.</p>
   </div>
 
   <!-- Right side: Single Video section -->
-  <div class="video-section" style="width: 55%; ">
+  <div class="video-section col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
       <video id="videoPlayer1" width="100%" autoplay muted>
           <source src="./image_assets/video_demo/MRI-Brain-T1Gd.mp4" type="video/mp4">
           Your browser does not support the video tag.
@@ -245,14 +245,35 @@
   </div>
 </section>
 
-  
-<section class="section" id="detection" style="display: flex; justify-content: space-between;align-items: center; margin:5%;">
+<!-- css  -->
+<style>
+.section.columns_video {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5%;
+    flex-wrap: wrap; /* Ensures content wraps on smaller screens */
+}
+
+/* Media Query for Mobile Devices */
+@media (max-width: 768px) {
+    .section.columns_video {
+        flex-direction: column; /* Stacks the flex items vertically */
+    }
+
+    .text-section, .video-section {
+        /* Ensure each section takes full width on smaller screens */
+        width: 100%;
+    }
+}
+</style> 
+<section class="section columns_video" id="detection" style="display: flex; justify-content: space-between;align-items: center; margin:5%;">
   <!-- left be caption and right be video -->
-  <div class="text-section" style="width: 40%; padding: 5%">
+  <div class="text-section col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
     <h1 style="font-size: 2em;">Everywhere</h1>
     <p>BiomedParse <a href="#" style="color: #6366f1;""><strong>detect</strong></a> the specific object of interest, and locate it at pixel-level precision, even for objects with irregular shapes. By effectively identifying text prompts describing objects that do not exist in the image, BiomedParse is capable of object detection in an end-to-end manner.</p>
 </div>
-<div class="video-section" style="width: 55%; ">
+<div class="video-section col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
   <video id="videoPlayer2" width="100%" autoplay muted>
       <source src="./image_assets/video_demo/MRI-Brain-T1Gd.mp4" type="video/mp4">
       Your browser does not support the video tag.
@@ -260,13 +281,13 @@
 </div>
 </section>
 
-<section class="section" id="recognition" style="display: flex;  justify-content: space-between;align-items: center; margin:5%;">
+<section class="section columns_video" id="recognition" style="display: flex;  justify-content: space-between;align-items: center; margin:5%;">
   <!-- left be caption and right be video -->
-  <div class="text-section" style="width: 40%; padding: 5%">
+  <div class="text-section col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
     <h1 style="font-size: 2rem;">All at Once</h1>
     <p>Tired of typing prompts for every objects? BiomedParse performs object <a href="#" style="color: #6366f1;""><strong>recognition</strong></a> all at once. BiomedParse learned 82 objects types and automatically identifies all objects in a given image along with their semantic types, and simultaneously segment and label all biomedical objects of interests.</p>
 </div>
-<div class="video-section" style="width: 55%; ">
+<div class="video-section col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
   <video id="videoPlayer3" width="100%" autoplay muted>
       <source src="./image_assets/video_demo/MRI-Brain-T1Gd.mp4" type="video/mp4">
       Your browser does not support the video tag.
