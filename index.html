@@ -237,14 +237,14 @@
   </div>
 
   <!-- Right side: Single Video section -->
-  <div class="video-section col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6" style="position: relative;">
+  <div class="video-section col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
       <video id="videoPlayer1" width="100%" autoplay muted defaultMuted>
           <source src="./image_assets/video_demo/MRI-Brain-T1Gd.mp4" type="video/mp4">
           Your browser does not support the video tag.
       </video>
-      <button id="playButton" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 24px; color: white; background-color: rgba(0, 0, 0, 0.5); border: none; padding: 10px 20px; cursor: pointer; display: none;">Play</button>
   </div>
 </section>
+
 <!-- css  -->
 <style>
 .section.columns_video {
@@ -265,48 +265,10 @@
         /* Ensure each section takes full width on smaller screens */
         width: 100%;
     }
-
-  #playButton {
-      display: block; /* Show the play button only on mobile */
-  }
-  video[controls]::-webkit-media-controls-panel {
-      display: none !important; /* Hide the default controls on mobile */
-  }
-  video[controls]::-webkit-media-controls-play-button {
-      display: none !important;
-  }
-  video[controls]::-webkit-media-controls-start-playback-button {
-      display: none !important;
-  }
 }
-
 </style> 
 
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-      var video = document.getElementById('videoPlayer1');
-      var playButton = document.getElementById('playButton');
-  
-      playButton.addEventListener('click', function() {
-          if (video.paused) {
-              video.play();
-              playButton.style.display = 'none'; // Hide play button when video is playing
-          } else {
-              video.pause();
-              playButton.style.display = 'block'; // Show play button when video is paused
-          }
-      });
-  
-      // Hide play button when video plays, show when paused
-      video.addEventListener('play', function() {
-          playButton.style.display = 'none';
-      });
-      video.addEventListener('pause', function() {
-          playButton.style.display = 'block';
-      });
-  });
-  </script>
-  
+
 
 
 
@@ -322,6 +284,7 @@
       Your browser does not support the video tag.
   </video>
 </div>
+</section>
 
 <section class="section columns_video" id="recognition" style="display: flex;  justify-content: space-between;align-items: center; margin:5%;">
   <!-- left be caption and right be video -->
