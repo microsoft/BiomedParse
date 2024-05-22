@@ -269,16 +269,17 @@
 </style> 
 
 <!-- JavaScript for ensuring autoplay on mobile devices after user interaction -->
-document.addEventListener('DOMContentLoaded', function() {
-  var videos = document.querySelectorAll('video[autoplay]');
-  videos.forEach(function(video) {
-      video.muted = true; // Ensure the video is muted
-      video.play().catch(function(error) {
-          console.log('Autoplay was prevented: ', error);
-      });
-  });
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var videos = document.querySelectorAll('video[autoplay]');
+    videos.forEach(function(video) {
+        video.muted = true; // Ensure the video is muted
+        video.play().catch(function(error) {
+            console.log('Autoplay was prevented: ', error);
+        });
+    });
 });
-
+</script>
 
 
 
