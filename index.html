@@ -238,38 +238,9 @@
 
   <!-- Right side: Single Video section -->
   <div class="video-section col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-      <video id="videoPlayer1" width="100%" autoplay muted defaultMuted>
-          <source src="./image_assets/video_demo/MRI-Brain-T1Gd.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-      </video>
+    <img id="gifPlayer1" src="./image_assets/gif_demo/MRI-Brain-T1Gd_gif.gif" alt="BiomedParse Demo" width="100%">
   </div>
 </section>
-
-<!-- css  -->
-<style>
-.section.columns_video {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 5%;
-    flex-wrap: wrap; /* Ensures content wraps on smaller screens */
-}
-
-/* Media Query for Mobile Devices */
-@media (max-width: 768px) {
-    .section.columns_video {
-        flex-direction: column; /* Stacks the flex items vertically */
-    }
-
-    .text-section, .video-section {
-        /* Ensure each section takes full width on smaller screens */
-        width: 100%;
-    }
-}
-</style> 
-
-
-
 
 
 <section class="section columns_video" id="detection" style="display: flex; justify-content: space-between;align-items: center; margin:5%;">
@@ -279,57 +250,78 @@
     <p>BiomedParse <a href="#" style="color: #6366f1;""><strong>detects</strong></a> the specific object of interest, and locate it at pixel-level precision, even for objects with irregular shapes. By effectively identifying text prompts describing object that does not exist in the image, BiomedParse is capable of object detection in an end-to-end manner.</p>
 </div>
 <div class="video-section col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-  <video id="videoPlayer2" width="100%" autoplay muted defaultMuted>
-      <source src="./image_assets/video_demo/MRI-Brain-T1Gd.mp4" type="video/mp4">
-      Your browser does not support the video tag.
+    <img id="gifPlayer2" src="./image_assets/gif_demo/CT-nodule_gif.gif" alt="Advanced Detection Demo" width="100%">
+
   </video>
 </div>
 </section>
-
-<section class="section columns_video" id="recognition" style="display: flex;  justify-content: space-between;align-items: center; margin:5%;">
-  <!-- left be caption and right be video -->
-  <div class="text-section col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6" style="padding: 5%;">
-    <h1 style="font-size: 2rem;">All at Once</h1>
-    <p>Tired of typing prompts for every objects? BiomedParse can do object <a href="#" style="color: #6366f1;""><strong>recognition</strong></a> all at once. Having learned 82 object types, BiomedParse can automatically identify all objects in a given image along with their semantic types, and simultaneously segment and label all biomedical objects of interests.</p>
-</div>
-<div class="video-section col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-  <video id="videoPlayer3" width="100%" autoplay muted defaultMuted>
-      <source src="./image_assets/video_demo/MRI-Brain-T1Gd.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-  </video>
-</section>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-      // Array of arrays, each containing video URLs for each player
-      var allVideos = [
-      [
-      './image_assets/video_demo/MRI-Brain-T1Gd.mp4',
-      './image_assets/video_demo/Pathology_prompts.mp4'
-      ],
-      ["./image_assets/video_demo/CT-nodule.mp4",
-      "./image_assets/video_demo/CT-COVID.mp4"
-      ],
-      ["./image_assets/video_demo/CT-Abdomen_short.mp4",
-      "./image_assets/video_demo/Pathology_all_cells.mp4"
-      ],
-      ];
   
-      allVideos.forEach(function(videos, index) {
-          var player = document.getElementById('videoPlayer' + (index + 1)); // Get each player by id
-          var currentVideo = 0;
-          player.src = videos[currentVideo]; // Set initial source
+
+  <section class="section columns_video" id="recognition" style="display: flex; justify-content: space-between; align-items: center; margin:5%;">
+    <!-- left be caption and right be video -->
+    <div class="text-section col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6" style="padding: 5%;">
+      <h1 style="font-size: 2rem;">All at Once</h1>
+      <p>Tired of typing prompts for every objects? BiomedParse can do object <a href="#" style="color: #6366f1;"><strong>recognition</strong></a> all at once. Having learned 82 object types, BiomedParse can automatically identify all objects in a given image along with their semantic types, and simultaneously segment and label all biomedical objects of interests.</p>
+    </div>
+    <div class="video-section col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+      <img id="gifPlayer3" src="./image_assets/gif_demo/MRI-Brain-T1Gd_gif.gif" alt="BiomedParse Demo" width="100%">
+    </div>
+  </section>
   
-          player.addEventListener('ended', function() {
-              currentVideo = (currentVideo + 1) % videos.length; // Loop through videos
-              player.src = videos[currentVideo];
-              player.load(); // Load the new video file
-              player.play(); // Play the new video
-          });
-      });
-  });
+  <!-- css  -->
+  <style>
+    .section.columns_video {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 5%;
+        flex-wrap: wrap; /* Ensures content wraps on smaller screens */
+    }
+    
+    /* Media Query for Mobile Devices */
+    @media (max-width: 768px) {
+        .section.columns_video {
+            flex-direction: column; /* Stacks the flex items vertically */
+        }
+    
+        .text-section, .video-section {
+            /* Ensure each section takes full width on smaller screens */
+            width: 100%;
+        }
+    }
+  </style>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var allGifs = [
+            [
+                './image_assets/gif_demo/MRI-Brain-T1Gd_gif.gif',
+                './image_assets/gif_demo/Pathology_prompts_gif.gif'
+            ],
+            [
+                './image_assets/gif_demo/CT-nodule_gif.gif',
+                './image_assets/gif_demo/CT-COVID_gif.gif'
+            ],
+            [
+                './image_assets/gif_demo/CT-Abdomen_short_gif.gif',
+                './image_assets/gif_demo/Pathology_all_cells_gif.gif'
+            ]
+        ];
+  
+        allGifs.forEach(function(gifs, index) {
+            var player = document.getElementById('gifPlayer' + (index + 1));
+            var currentGif = 0;
+  
+            function changeGif() {
+                player.src = gifs[currentGif];
+                currentGif = (currentGif + 1) % gifs.length;
+            }
+  
+            setInterval(changeGif, 5000); // Change GIF every 5 seconds (5000 milliseconds)
+        });
+    });
   </script>
-
+  
 <section class="hero is-small" style="padding: 0">
   <div class="hero-body">
     <div class="container is-max-desktop has-text-centered">
