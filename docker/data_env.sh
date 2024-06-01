@@ -1,0 +1,1 @@
+export HANOVER_DATASETS=/path/to/data # Path to the datasets
