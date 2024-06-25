@@ -1,6 +1,5 @@
-# *BiomedParse:* 
+# *BiomedParse* 
 :grapes: \[[Read Our arXiv Paper](https://arxiv.org/abs/2405.12971)\] &nbsp; :apple: \[[Check Our Demo](https://microsoft.github.io/BiomedParse/)\] 
-
 
 install docker
 ```
@@ -13,21 +12,13 @@ apt-cache policy docker-ce
 sudo apt install docker-ce
 ```
 
-
-
 Prepare docker environment:
 Specify project directories in docker/README.md
 ```sh
-<<<<<<< HEAD
 bash docker/docker_build.sh
 bash docker/docker_run.sh
 bash docker/setup_inside_docker.sh
 source docker/data_env.sh 
-=======
-sudo bash docker/docker_build.sh
-sudo bash docker/docker_run.sh
-sudo bash docker/setup_inside_docker.sh
->>>>>>> origin/aiden/eval
 ```
 
 Training using example BioParseData:
