@@ -1,3 +1,4 @@
 .DS_Store
-*/_pycache_/*
+*_pycache_*
 pretrained/*
+modeling/vision/encoder/ops/*
