@@ -19,8 +19,8 @@ CUDA_VISIBLE_DEVICES=0,1,2,3 mpirun -n 4 python entry.py train \
             TEST.BATCH_SIZE_TOTAL 4 \
             TRAIN.BATCH_SIZE_TOTAL 4 \
             TRAIN.BATCH_SIZE_PER_GPU 1 \
-            SOLVER.MAX_NUM_EPOCHS 10 \
-            SOLVER.BASE_LR 0.00005 \
+            SOLVER.MAX_NUM_EPOCHS 20 \
+            SOLVER.BASE_LR 0.00001 \
             SOLVER.FIX_PARAM.backbone False \
             SOLVER.FIX_PARAM.lang_encoder False \
             SOLVER.FIX_PARAM.pixel_decoder False \

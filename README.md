@@ -5,7 +5,7 @@
 
 ### Install Docker
 
-Follow these commands to install Docker on Ubuntu:
+In order to make sure the environment is set up correctly, we use run BiomedParse on a Docker image. Follow these commands to install Docker on Ubuntu:
 
 ```sh
 sudo apt update
@@ -30,7 +30,7 @@ bash docker/setup_inside_docker.sh
 source docker/data_env.sh 
 ```
 
-## Data Description and Preparation
+<!-- ## Data Description and Preparation
 
 ### Data Description
 
@@ -51,7 +51,7 @@ bash assets/scripts/train.sh
 ### Customizing Training Settings
 
 **Placeholder:**
-- Changing Parameters: [Describe how to change parameters, e.g., learning rate, batch size, etc.]
+- Changing Parameters: Specify the hyperparameters for 
 - Customizing Training Settings: [Provide examples of how to customize the training settings]
 
 ## Evaluation
@@ -60,16 +60,60 @@ To evaluate the model on the example BioParseData, run:
 
 ```sh
 bash assets/scripts/eval.sh
-```
+``` -->
 
 ## Inference
+Example inference code is provided in `example_prediction.py`. We provided example images in `examples` to load from. Model checkpoint is provided in `pretrained` to load from. Model configuration is provided in `configs/biomedparse_inference.yaml`.
 
+### Model Setup
+```sh
+from PIL import Image
+import torch
+import argparse
+from modeling.BaseModel import BaseModel
+from modeling import build_model
+from utils.distributed import init_distributed
+from utils.arguments import load_opt_from_config_files
+from utils.constants import BIOMED_CLASSES
+from inference_utils.inference import interactive_infer_image
+
+# Build model config
+def parse_option():
+    parser = argparse.ArgumentParser('SEEM Demo', add_help=False)
+    parser.add_argument('--conf_files', default="configs/biomedparse_inference.yaml", metavar="FILE", help='path to config file', )
+    parser.add_argument('--model_path', default="pretrained/biomed_parse.pt", metavar="FILE", help='path to model file')
+    cfg = parser.parse_args()
+    return cfg
+
+cfg = parse_option()
+opt = load_opt_from_config_files([cfg.conf_files])
+opt = init_distributed(opt)
+
+# Load model from pretrained weights
+pretrained_pth = 'pretrained/biomed_parse.pt'
+
+model = BaseModel(opt, build_model(opt)).from_pretrained(pretrained_pth).eval().cuda()
+with torch.no_grad():
+    model.model.sem_seg_head.predictor.lang_encoder.get_text_embeddings(BIOMED_CLASSES + ["background"], is_eval=True)
+```
+
+### Segmentation On Example Images
+```sh
+# RGB image input of shape (H, W, 3). Currently only batch size 1 is supported.
+image = Image.open('examples/Part_3_226_pathology_breast.png', formats=['png']) 
+image = image.convert('RGB')
+# text prompts querying objects in the image. Multiple ones can be provided.
+prompts = ['neoplastic cells in breast pathology', 'inflammatory cells']
+
+pred_mask, pred_text = interactive_infer_image(model, image, prompts)
+```
+
+<!-- 
 Detection and recognition inference code are provided in `inference_utils/output_processing.py`.
 
 - `check_mask_stats()`: Outputs p-value for model-predicted mask for detection.
-- `combine_masks()`: Combines predictions for non-overlapping masks.
+- `combine_masks()`: Combines predictions for non-overlapping masks. -->
 
-@IceBubble217 details/example for usage.
 
 
 ## Reproducing Results
@@ -78,12 +122,12 @@ To reproduce the exact results presented in the paper, use the following table o
 | Configuration Parameter     | Description                              | Value                              |
 |-----------------------------|------------------------------------------|------------------------------------|
 | Data Directory              | Path to the dataset                      | `/path/to/data/`                   |
-| Pre-trained Model Checkpoint| Path to the pre-trained model checkpoint | `/path/to/checkpoint/model.pth`    |
+| Pre-trained Model Checkpoint| Path to the pre-trained model checkpoint | `pretrained/biomed_parse.pt`    |
 | Training Script             | Script used for training                 | `assets/scripts/train.sh`          |
 | Evaluation Script           | Script used for evaluation               | `assets/scripts/eval.sh`           |
-| Inference Script            | Script for running inference             | `inference_utils/output_processing.py` |
+| Inference Script            | Script for running inference             | `example_prediction.py` |
 | Environment Variables       | Required environment variables           | See below                          |                     |
-| Configuration File          | Configuration file for the model         | `configs/biomedseg/biomed_seg_lang_v1.yaml` |
+| Configuration File          | Configuration file for the model         | `configs/biomed_seg_lang_v1.yaml` |
 | Training Parameters         | Additional training parameters           | See below                          |
 | Output Directory            | Directory to save outputs                | `outputs/`                         |
 
@@ -114,8 +158,8 @@ CUDA_VISIBLE_DEVICES=0,1,2,3 mpirun -n 4 python entry.py train \
     TEST.BATCH_SIZE_TOTAL 4 \
     TRAIN.BATCH_SIZE_TOTAL 4 \
     TRAIN.BATCH_SIZE_PER_GPU 1 \
-    SOLVER.MAX_NUM_EPOCHS 10 \
-    SOLVER.BASE_LR 0.00005 \
+    SOLVER.MAX_NUM_EPOCHS 20 \
+    SOLVER.BASE_LR 0.00001 \
     SOLVER.FIX_PARAM.backbone False \
     SOLVER.FIX_PARAM.lang_encoder False \
     SOLVER.FIX_PARAM.pixel_decoder False \
@@ -135,9 +179,6 @@ CUDA_VISIBLE_DEVICES=0,1,2,3 mpirun -n 4 python entry.py train \
     RESUME_FROM pretrained/biomed_parse.pt
 ```
 
-
-## Additional Notes
-- Refer to the Method section in our paper for more details on the algorithms and implementation.
 
 
 

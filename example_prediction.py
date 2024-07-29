@@ -1,9 +1,6 @@
 from PIL import Image
-
 import torch
 import argparse
-import numpy as np
-
 from modeling.BaseModel import BaseModel
 from modeling import build_model
 from utils.distributed import init_distributed
@@ -11,7 +8,6 @@ from utils.arguments import load_opt_from_config_files
 from utils.constants import BIOMED_CLASSES
 
 from inference_utils.inference import interactive_infer_image
-
 
 # Build model config
 def parse_option():
@@ -21,9 +17,6 @@ def parse_option():
     cfg = parser.parse_args()
     return cfg
 
-'''
-build args
-'''
 cfg = parse_option()
 opt = load_opt_from_config_files([cfg.conf_files])
 opt = init_distributed(opt)
