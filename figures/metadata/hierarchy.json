@@ -1,0 +1,432 @@
+{
+    "organ": {
+        "name": "organ",
+        "child": {
+            "liver": {
+                "name": "liver",
+                "child": {
+                    "liver": {
+                        "site": ["abdomen", "liver"],
+                        "modalities": ["CT", "MRI", "Ultrasound"]
+                    }
+                }
+            },
+            "lung": {
+                "name": "lung",
+                "child": {
+                    "lung": {
+                        "site": ["chest", "lung"],
+                        "modalities": ["CT", "X-Ray"]
+                    },
+                    "left lung": {
+                        "site": ["chest", "lung"],
+                        "modalities": ["CT", "X-Ray"]
+                    },
+                    "right lung": {
+                        "site": ["chest", "lung"],
+                        "modalities": ["CT", "X-Ray"]
+                    },
+                    "left lower lung lobe": {
+                        "site": ["chest", "lung"],
+                        "modalities": ["CT", "X-Ray"]
+                    },
+                    "left upper lung lobe": {
+                        "site": ["chest", "lung"],
+                        "modalities": ["CT", "X-Ray"]
+                    },
+                    "right lower lung lobe": {
+                        "site": ["chest", "lung"],
+                        "modalities": ["CT", "X-Ray"]
+                    },
+                    "right upper lung lobe": {
+                        "site": ["chest", "lung"],
+                        "modalities": ["CT", "X-Ray"]
+                    },
+                    "right middle lung lobe": {
+                        "site": ["chest", "lung"],
+                        "modalities": ["CT", "X-Ray"]
+                    },
+                    "lower lung lobe": {
+                        "site": ["chest", "lung"],
+                        "modalities": ["CT", "X-Ray"]
+                    },
+                    "upper lung lobe": {
+                        "site": ["chest", "lung"],
+                        "modalities": ["CT", "X-Ray"]
+                    },
+                    "middle lung lobe": {
+                        "site": ["chest", "lung"],
+                        "modalities": ["CT", "X-Ray"]
+                    }
+                }
+            },
+            "kidney": {
+                "name": "kidney",
+                "child": {
+                    "kidney": {
+                        "site": ["abdomen", "kidney"],
+                        "modalities": ["CT", "MRI", "Ultrasound"]
+                    },
+                    "left kidney": {
+                        "site": ["abdomen", "kidney"],
+                        "modalities": ["CT", "MRI", "Ultrasound"]
+                    },
+                    "right kidney": {
+                        "site": ["abdomen", "kidney"],
+                        "modalities": ["CT", "MRI", "Ultrasound"]
+                    }
+                }
+            },
+            "pancreas": {
+                "name": "pancreas",
+                "child": {
+                    "pancreas": {
+                        "site": ["abdomen", "pancreas"],
+                        "modalities": ["CT", "MRI"]
+                    }
+                }
+            },
+            "heart anatomies": {
+                "name": "heart anatomies",
+                "child": {
+                    "left heart atrium": {
+                        "site": ["heart"],
+                        "modalities": ["MRI", "Ultrasound"]
+                    },
+                    "left heart ventricle": {
+                        "site": ["heart"],
+                        "modalities": ["MRI", "Ultrasound"]
+                    },
+                    "right heart ventricle": {
+                        "site": ["heart"],
+                        "modalities": ["MRI"]
+                    },
+                    "myocardium": {
+                        "site": ["heart"],
+                        "modalities": ["MRI"]
+                    },
+                    "heart": {
+                        "site": ["heart", "chest"],
+                        "modalities": ["X-Ray"]
+                    }
+                }
+            },
+            "brain anatomies": {
+                "name": "brain anatomies",
+                "child": {
+                    "brain ventricles": {
+                        "site": ["brain"],
+                        "modalities": ["MRI"]
+                    },
+                    "cerebellum": {
+                        "site": ["brain"],
+                        "modalities": ["MRI"]
+                    },
+                    "anterior hippocampus": {
+                        "site": ["brain"],
+                        "modalities": ["MRI"]
+                    },
+                    "posterior hippocampus": {
+                        "site": ["brain"],
+                        "modalities": ["MRI"]
+                    }
+                }
+            },
+            "eye anatomies": {
+                "name": "eye anatomies",
+                "child": {
+                    "optic disc": {
+                        "site": ["eye"],
+                        "modalities": ["Fundus"]
+                    },
+                    "optic cup": {
+                        "site": ["eye"],
+                        "modalities": ["Fundus"]
+                    }
+                }
+            },
+            "vessel": {
+                "name": "vessel",
+                "child": {
+                    "aorta": {
+                        "site": ["abdomen"],
+                        "modalities": ["CT", "MRI"]
+                    },
+                    "postcava": {
+                        "site": ["abdomen"],
+                        "modalities": ["CT", "MRI"]
+                    },
+                    "hepatic vessel": {
+                        "site": ["liver"],
+                        "modalities": ["CT", "MRI"]
+                    },
+                    "retinal vessel": {
+                        "site": ["eye"],
+                        "modalities": ["Fundus"]
+                    }
+                }
+            },
+            "other organ": {
+                "name": "other organ",
+                "child": {
+                    "spleen": {
+                        "site": ["abdomen"],
+                        "modalities": ["CT", "MRI"]
+                    },
+                    "gallbladder": {
+                        "site": ["abdomen"],
+                        "modalities": ["CT", "MRI"]
+                    },
+                    "left adrenal gland": {
+                        "site": ["abdomen"],
+                        "modalities": ["CT", "MRI"]
+                    },
+                    "right adrenal gland": {
+                        "site": ["abdomen"],
+                        "modalities": ["CT", "MRI"]
+                    },
+                    "adrenal gland": {
+                        "site": ["abdomen"],
+                        "modalities": ["CT", "MRI"]
+                    },
+                    "esophagus": {
+                        "site": ["abdomen"],
+                        "modalities": ["CT", "MRI"]
+                    },
+                    "uterus": {
+                        "site": ["pelvis"],
+                        "modalities": ["CT"]
+                    },
+                    "prostate": {
+                        "site": ["pelvis", "prostate"],
+                        "modalities": ["CT", "MRI"]
+                    },
+                    "prostate peripheral zone": {
+                        "site": ["prostate"],
+                        "modalities": ["MRI"]
+                    },
+                    "prostate transitional zone": {
+                        "site": ["prostate"],
+                        "modalities": ["MRI"]
+                    },
+                    "stomach": {
+                        "site": ["abdomen"],
+                        "modalities": ["CT", "MRI"]
+                    },
+                    "bladder": {
+                        "site": ["pelvis"],
+                        "modalities": ["CT"]
+                    },
+                    "duodenum": {
+                        "site": ["abdomen"],
+                        "modalities": ["CT", "MRI"]
+                    },
+                    "colon": {
+                        "site": ["pelvis"],
+                        "modalities": ["CT"]
+                    },
+                    "public symphysis": {
+                        "site": ["transperineal"],
+                        "modalities": ["Ultrasound"]
+                    },
+                    "fetal head": {
+                        "site": ["transperineal"],
+                        "modalities": ["Ultrasound"]
+                    }
+                }
+            }
+        }
+    },
+    "abnormality": {
+        "name": "abnormality",
+        "child": {
+            "tumor": {
+                "name": "tumor",
+                "child": {
+                    "enhancing tumor": {
+                        "site": ["brain"],
+                        "modalities": ["MRI"]
+                    },
+                    "non-enhancing tumor": {
+                        "site": ["brain"],
+                        "modalities": ["MRI"]
+                    },
+                    "benign breast tumor": {
+                        "site": ["breast"],
+                        "modalities": ["Ultrasound"]
+                    },
+                    "malignant breast tumor": {
+                        "site": ["breast"],
+                        "modalities": ["Ultrasound"]
+                    },
+                    "breast tumor": {
+                        "site": ["breast"],
+                        "modalities": ["Ultrasound"]
+                    },
+                    "brain tumor core": {
+                        "site": ["brain"],
+                        "modalities": ["MRI"]
+                    },
+                    "whole brain tumor": {
+                        "site": ["brain"],
+                        "modalities": ["MRI"]
+                    },
+                    "kidney tumor": {
+                        "site": ["kidney"],
+                        "modalities": ["CT"]
+                    },
+                    "liver tumor": {
+                        "site": ["liver"],
+                        "modalities": ["CT"]
+                    },
+                    "lung tumor": {
+                        "site": ["lung"],
+                        "modalities": ["CT"]
+                    },
+                    "pancreas tumor": {
+                        "site": ["pancreas"],
+                        "modalities": ["CT"]
+                    },
+                    "colon tumor": {
+                        "site": ["colon"],
+                        "modalities": ["CT"]
+                    },
+                    "lower-grade glioma": {
+                        "site": ["brain"],
+                        "modalities": ["MRI"]
+                    }
+                }
+            },
+            "infection": {
+                "name": "infection",
+                "child": {
+                    "COVID-19 infection": {
+                        "site": ["lung", "chest"],
+                        "modalities": ["CT", "X-Ray"]
+                    },
+                    "viral pneumonia": {
+                        "site": ["lung", "chest"],
+                        "modalities": ["X-Ray"]
+                    },
+                    "lung opacity": {
+                        "site": ["lung", "chest"],
+                        "modalities": ["X-Ray"]
+                    }
+                }
+            },
+            "lesion": {
+                "name": "lesion",
+                "child": {
+                    "lung nodule": {
+                        "site": ["lung", "chest"],
+                        "modalities": ["CT", "X-Ray"]
+                    },
+                    "kidney cyst": {
+                        "site": ["kidney"],
+                        "modalities": ["CT"]
+                    },
+                    "colon polyp": {
+                        "site": ["colon"],
+                        "modalities": ["Endoscope"]
+                    },
+                    "neoplastic colon polyp": {
+                        "site": ["colon"],
+                        "modalities": ["Endoscope"]
+                    },
+                    "non-neoplastic colon polyp": {
+                        "site": ["colon"],
+                        "modalities": ["Endoscope"]
+                    },
+                    "melanoma": {
+                        "site": ["skin"],
+                        "modalities": ["Dermoscopy"]
+                    }
+                }
+            },
+            "fluid disturbance": {
+                "name": "fluid disturbance",
+                "child": {
+                    "brain tumor edema": {
+                        "site": ["brain"],
+                        "modalities": ["MRI"]
+                    },
+                    "cystoid macular edema": {
+                        "site": ["eye"],
+                        "modalities": ["OCT"]
+                    },
+                    "pleural effusion": {
+                        "site": ["chest", "lung"],
+                        "modalities": ["CT", "X-Ray"]
+                    }
+                }
+            },
+            "other abnormality": {
+                "name": "other abnormality",
+                "child": {
+                    "pneumothorax": {
+                        "site": ["chest", "lung"],
+                        "modalities": ["X-Ray"]
+                    },
+                    "pulmonary embolism": {
+                        "site": ["chest", "lung"],
+                        "modalities": ["CT"]
+                    }
+                }
+            }
+        }
+    },
+    "histology": {
+        "name": "histology",
+        "child": {
+            "histology structure": {
+                "name": "histology structure",
+                "child": {
+                    "colon glandular structure": {
+                        "site": ["colon"],
+                        "modalities": ["Pathology"]
+                    },
+                    "breast cancer cells": {
+                        "site": ["breast"],
+                        "modalities": ["Pathology"]
+                    },
+                    "benign breast cancer cells": {
+                        "site": ["breast"],
+                        "modalities": ["Pathology"]
+                    },
+                    "malignant breast cancer cells": {
+                        "site": ["breast"],
+                        "modalities": ["Pathology"]
+                    },
+                    "neoplastic cells": {
+                        "site": ["adrenal gland", "bile-duct", "bladder", "breast", "cervix",
+                        "colon", "esophagus", "head-neck", "kidney", "liver", "lung",
+                        "ovarian", "pancreas", "prostate", "skin", "stomach", "testis",
+                        "thyroid", "uterus"],
+                        "modalities": ["Pathology"]
+                    },
+                    "inflammatory cells": {
+                        "site": ["adrenal gland", "bile-duct", "bladder", "breast", "cervix",
+                        "colon", "esophagus", "head-neck", "kidney", "liver", "lung",
+                        "ovarian", "pancreas", "prostate", "skin", "stomach", "testis",
+                        "thyroid", "uterus"],
+                        "modalities": ["Pathology"]
+                    },
+                    "connective tissue cells": {
+                        "site": ["adrenal gland", "bile-duct", "bladder", "breast", "cervix",
+                        "colon", "esophagus", "head-neck", "kidney", "liver", "lung",
+                        "ovarian", "pancreas", "prostate", "skin", "stomach", "testis",
+                        "thyroid", "uterus"],
+                        "modalities": ["Pathology"]
+                    },
+                    "epithelial cells": {
+                        "site": ["adrenal gland", "bile-duct", "bladder", "breast", "cervix",
+                        "colon", "esophagus", "head-neck", "kidney", "liver", "lung",
+                        "ovarian", "pancreas", "prostate", "skin", "stomach", "testis",
+                        "thyroid", "uterus"],
+                        "modalities": ["Pathology"]
+                    }
+                }
+            }
+        }
+    }
+}

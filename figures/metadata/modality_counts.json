@@ -1,0 +1,58 @@
+{
+    "MRI": {
+        "cardiac": 18428,
+        "brain": 1516784,
+        "prostate": 2880,
+        "abdomen": 14948
+    },
+    "CT": {
+        "abdomen": 977437,
+        "liver": 143544,
+        "pelvis": 1277,
+        "lung": 519158,
+        "chest": 238,
+        "pancreas": 10695,
+        "colon": 1245,
+        "heart": 33495
+    },
+    "pathology": {
+        "breast": 5450,
+        "colon": 4392,
+        "lung": 397,
+        "kidney": 247,
+        "prostate": 328,
+        "bladder": 233,
+        "stomach": 336,
+        "ovarian": 290,
+        "esophagus": 714,
+        "pancreatic": 404,
+        "uterus": 359,
+        "thyroid": 508,
+        "skin": 373,
+        "cervix": 526,
+        "testis": 428,
+        "liver": 483
+    },
+    "ultrasound": {
+        "breast": 1294,
+        "cardiac": 42463,
+        "transperineal": 8000,
+        "abdomen": 53
+    },
+    "X-Ray": {
+        "chest": 82785
+    },
+    "fundus": {
+        "retinal": 4230
+    },
+    "dermoscopy": {
+        "skin": 4019
+    },
+    "endoscope": {
+        "colon": 2050,
+        "other": 1411
+    },
+    "OCT": {
+        "retinal": 1460
+    }
+}

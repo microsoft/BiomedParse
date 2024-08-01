@@ -2,7 +2,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-import json
+import json, os
 import seaborn as sns
 
 plt.rc('axes.spines', **{'bottom': True, 'left': True, 'right': False, 'top': False})
@@ -11,7 +11,7 @@ plt.rc('axes.spines', **{'bottom': True, 'left': True, 'right': False, 'top': Fa
 def load_data(file_path):
     with open(file_path, 'r') as f:
         return json.load(f)
-base_dir = '/mnt/hanoverdev/data/BiomedSeg/figures_data'
+base_dir = 'metadata'
 data = load_data(os.path.join(base_dir, 'modality_counts.json'))
 separate_submodality = False
 
@@ -82,7 +82,7 @@ def plot_data(df, total_counts_by_modality, sorted_modalities, modality_color_ma
     configure_plot(ax, sorted_modalities)
 
     plt.tight_layout()
-    plt.savefig("./data_dist_modality_bar_subbar.pdf" if separate_submodality else "./data_dist_modality_bar.pdf", bbox_inches="tight", pad_inches=0)
+    plt.savefig("plots/data_dist_modality_bar_subbar.pdf" if separate_submodality else "plots/data_dist_modality_bar.pdf", bbox_inches="tight", pad_inches=0)
     plt.show()
 
 # Configure plot aesthetics

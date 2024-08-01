@@ -1,1 +1,1 @@
-export HANOVER_DATASETS=/path/to/data # Path to the datasets
+export HANOVER_DATASETS=biomedparse_datasets/ # Path to the datasets

@@ -7,7 +7,7 @@ from scipy.stats import boxcox
 from pycirclize import Circos
 import matplotlib.pyplot as plt
 
-base_dir = '/mnt/hanoverdev/data/BiomedSeg/figures_data'
+base_dir = 'metadata'
 with open(os.path.join(base_dir,'hierarchy.json'), 'r') as f:
     hierarchy_data = json.load(f)
 
@@ -93,7 +93,7 @@ for sector in circos.sectors:
     track2.bar(x, y_box, color=name2color[sector.name], alpha=0.5, align="center", lw=0)
 
 fig = circos.plotfig()
-fig.savefig('figure_1a.pdf')
+fig.savefig('plots/figure_1a.pdf')
 plt.show()
 
 # %%

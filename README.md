@@ -30,14 +30,48 @@ bash docker/setup_inside_docker.sh
 source docker/data_env.sh 
 ```
 
-<!-- ## Data Description and Preparation
+## Dataset Description and Preparation
 
-### Data Description
+### Raw Image and Annotation
+For each dataset, put the raw image and mask files in the following format
+├── biomedparse_datasets
+    ├── YOUR_DATASET_NAME
+        ├── train
+        ├── train_mask
+        ├── test
+        └── test_mask
 
-@IceBubble217 Provide a detailed description of the dataset used. Include information such as the source, structure, and any preprocessing steps required.
+Each folder should contain .png files. The mask files should be binary images where pixels != 0 indicates the foreground region.
 
-### Data Preparation
-Preprocessing scripts or commands that need to be run.
+### File Name Convention
+Each file name follows certain convention as
+
+[IMAGE-NAME]_[MODALITY]_[SITE].png
+
+[IMAGE-NAME] is any string that is unique for one image. The format can be anything.
+[MODALITY] is a string for the modality, such as "X-Ray"
+[SITE] is the anatomic site for the image, such as "chest"
+
+One image can be associated with multiple masks corresponding to multiple targets in the image. The mask file name convention is
+
+[IMAGE-NAME]_[MODALITY]_[SITE]_[TARGET].png
+
+[IMAGE-NAME], [MODALITY], and [SITE] are the same with the image file name.
+[TARGET] is the name of the target with spaces replaced by '+'. E.g. "tube" or "chest+tube". Make sure "_" doesn't appear in [TARGET].
+
+### Get Final Data File with Text Prompts
+In biomedparse_datasets/create-customer-datasets.py, specify YOUR_DATASET_NAME.
+Once the create-custom-coco-dataset script is run, the dataset folder should be of the following format
+├── dataset_name
+        ├── train
+        ├── train_mask
+        ├── train.json
+        ├── test
+        ├── test_mask
+        └── test.json
+
+### Register Your Dataset for Training and Evaluation
+In datasets/registration/register_biomed_datasets.py, simply add YOUR_DATASET_NAME to the datasets list. Registered datasets are ready to be added to the training and evaluation config file configs/biomed_seg_lang_v1.yaml. Your training dataset is registered as biomed_YOUR_DATASET_NAME_train, and your test dataset is biomed_YOUR_DATASET_NAME_test.
 
 
 ## Training
@@ -49,10 +83,7 @@ bash assets/scripts/train.sh
 ```
 
 ### Customizing Training Settings
-
-**Placeholder:**
-- Changing Parameters: Specify the hyperparameters for 
-- Customizing Training Settings: [Provide examples of how to customize the training settings]
+See Training Parameters section for example.
 
 ## Evaluation
 
@@ -60,7 +91,7 @@ To evaluate the model on the example BioParseData, run:
 
 ```sh
 bash assets/scripts/eval.sh
-``` -->
+```
 
 ## Inference
 Example inference code is provided in `example_prediction.py`. We provided example images in `examples` to load from. Model checkpoint is provided in `pretrained` to load from. Model configuration is provided in `configs/biomedparse_inference.yaml`.
