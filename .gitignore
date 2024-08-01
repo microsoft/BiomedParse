@@ -117,4 +117,4 @@ Config/*
 xdecoder_data
 output
 
-*/figures/plots/*
+*/biomedparse_eval_results.json
