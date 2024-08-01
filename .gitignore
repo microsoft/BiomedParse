@@ -116,3 +116,5 @@ Config/*
 # datasets
 xdecoder_data
 output
+
+*/figures/plots/*
