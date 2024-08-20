@@ -14,7 +14,7 @@ image_size = 1024
 
 ### Load Biomed Label Base
 # provide path to predefined label base
-with open(os.path.join('/storage/data/MedSegmentation/BiomedSeg/', 'label_base.json'), 'r') as f:
+with open('label_base.json', 'r') as f:
     label_base = json.load(f)
     
     

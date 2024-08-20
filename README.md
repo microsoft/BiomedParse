@@ -34,19 +34,21 @@ source docker/data_env.sh
 
 ### Raw Image and Annotation
 For each dataset, put the raw image and mask files in the following format
+```
 ├── biomedparse_datasets
     ├── YOUR_DATASET_NAME
         ├── train
         ├── train_mask
         ├── test
         └── test_mask
+```
 
 Each folder should contain .png files. The mask files should be binary images where pixels != 0 indicates the foreground region.
 
 ### File Name Convention
 Each file name follows certain convention as
 
-[IMAGE-NAME]_[MODALITY]_[SITE].png
+[IMAGE-NAME]\_[MODALITY]\_[SITE].png
 
 [IMAGE-NAME] is any string that is unique for one image. The format can be anything.
 [MODALITY] is a string for the modality, such as "X-Ray"
@@ -54,7 +56,7 @@ Each file name follows certain convention as
 
 One image can be associated with multiple masks corresponding to multiple targets in the image. The mask file name convention is
 
-[IMAGE-NAME]_[MODALITY]_[SITE]_[TARGET].png
+[IMAGE-NAME]\_[MODALITY]\_[SITE]\_[TARGET].png
 
 [IMAGE-NAME], [MODALITY], and [SITE] are the same with the image file name.
 [TARGET] is the name of the target with spaces replaced by '+'. E.g. "tube" or "chest+tube". Make sure "_" doesn't appear in [TARGET].
@@ -62,6 +64,7 @@ One image can be associated with multiple masks corresponding to multiple target
 ### Get Final Data File with Text Prompts
 In biomedparse_datasets/create-customer-datasets.py, specify YOUR_DATASET_NAME.
 Once the create-custom-coco-dataset script is run, the dataset folder should be of the following format
+```
 ├── dataset_name
         ├── train
         ├── train_mask
@@ -69,6 +72,7 @@ Once the create-custom-coco-dataset script is run, the dataset folder should be 
         ├── test
         ├── test_mask
         └── test.json
+```
 
 ### Register Your Dataset for Training and Evaluation
 In datasets/registration/register_biomed_datasets.py, simply add YOUR_DATASET_NAME to the datasets list. Registered datasets are ready to be added to the training and evaluation config file configs/biomed_seg_lang_v1.yaml. Your training dataset is registered as biomed_YOUR_DATASET_NAME_train, and your test dataset is biomed_YOUR_DATASET_NAME_test.
@@ -76,7 +80,7 @@ In datasets/registration/register_biomed_datasets.py, simply add YOUR_DATASET_NA
 
 ## Training
 
-To train the model using the example BioParseData, run:
+To train the model using the example BiomedParseData-Demo, run:
 
 ```sh
 bash assets/scripts/train.sh
@@ -87,7 +91,7 @@ See Training Parameters section for example.
 
 ## Evaluation
 
-To evaluate the model on the example BioParseData, run:
+To evaluate the model on the example BiomedParseData-Demo, run:
 
 ```sh
 bash assets/scripts/eval.sh

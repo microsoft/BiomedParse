@@ -16,38 +16,32 @@ from detectron2.utils.file_io import PathManager
 
 _PREDEFINED_SPLITS_BIOMED = {}
 
-datasets = ['ACDC', 'AbdomenCT-1K', 'BreastCancerCellSegmentation', 'BreastUS', 'CAMUS', 'CDD-CESM', 'COVID-QU-Ex', 
-            'CXR_Masks_and_Labels', 'FH-PS-AOP', 'G1020', 'GlaS', 'ISIC', 'LGG', 'LIDC-IDRI', 'MMs', 
-            'MSD/Task01_BrainTumour', 'MSD/Task02_Heart', 'MSD/Task03_Liver', 'MSD/Task04_Hippocampus', 
-            'MSD/Task05_Prostate', 'MSD/Task06_Lung', 'MSD/Task07_Pancreas', 'MSD/Task08_HepaticVessel', 
-            'MSD/Task09_Spleen', 'MSD/Task10_Colon', 'NeoPolyp', 'OCT-CME', 'PROMISE12', 'PolypGen', 'QaTa-COV19', 
-            'REFUGE', 'Radiography/COVID', 'Radiography/Lung_Opacity', 'Radiography/Normal', 'Radiography/Viral_Pneumonia', 
-            'Totalsegmentator2/abdomen', 'Totalsegmentator2/chest', 'UWaterlooSkinCancer', 'amos22/CT', 'amos22/MRI', 
-            'kits23', 'siim-acr-pneumothorax', 'PanNuke', 'LiverUS', 'BTCV-Cervix', 'COVID-19_CT', 'DRIVE']
+# example of registering a dataset
+datasets = ['BiomedParseData-Demo', ]   # provide name of the dataset under biomedparse_datasets
+splits = ['demo']    # provide split name, e.g., train, test, val. Here there is only one 'demo' split in the example demo dataset
 
+# Here we register all the splits of the dataset
 for name in datasets:
-    for split in ['train', 'test']:
+    for split in splits:
         dataname = f'biomed_{name.replace("/", "-")}_{split}'
-        image_root = f"BiomedSeg/{name}/{split}"
-        ann_root = f"BiomedSeg/{name}/{split}.json"
+        image_root = f"{name}/{split}"
+        ann_root = f"{name}/{split}.json"
         _PREDEFINED_SPLITS_BIOMED[dataname] = (image_root, ann_root)
+# The resulting dataset name is: biomed_BiomedParseData-Demo_demo
 
+# # Add your dataset here
+# datasets = ['YOUR_DATASET_NAME', ]   # provide name of the dataset under biomedparse_datasets
+# splits = ['train', 'test']    # provide split name, e.g., train, test, val
 
+# # Here we register all the splits of the dataset
+# for name in datasets:
+#     for split in splits:
+#         dataname = f'biomed_{name.replace("/", "-")}_{split}'
+#         image_root = f"{name}/{split}"
+#         ann_root = f"{name}/{split}.json"
+#         _PREDEFINED_SPLITS_BIOMED[dataname] = (image_root, ann_root)
+# # The resulting dataset names are: biomed_YOUR_DATASET_NAME_train, biomed_YOUR_DATASET_NAME_test
 
-# extra test data version
-data_versions = {'illegal': ['ISIC', 'PolypGen', 'GlaS_cell', 'LGG', 'REFUGE', 'COVID-19_CT', 'Radiography/Lung_Opacity', 'BreastUS'],
-                 'absent': ['amos22/CT', 'amos22/MRI', 'MSD/Task08_HepaticVessel', 'kits23', 'MSD/Task05_Prostate', 'ACDC', 
-                            'MSD/Task01_BrainTumour', 'MSD/Task04_Hippocampus', 'NeoPolyp', 'PanNuke'],
-                 }
-
-for version in data_versions:
-    for name in data_versions[version]:
-        for split in ['test']:
-            dataname = f'biomed_{name.replace("/", "-")}_{version}_{split}'
-            image_root = f"BiomedSeg/{name}/{split}"
-            ann_root = f"BiomedSeg/{name}/{split}_{version}.json"
-            _PREDEFINED_SPLITS_BIOMED[dataname] = (image_root, ann_root)
-            
 
 def get_metadata():
     meta = {}

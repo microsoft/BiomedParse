@@ -231,47 +231,15 @@ ATTENTION_ARCH:
 
 DATASETS:
   TRAIN: [
-  'biomed_CXR_Masks_and_Labels_train'
+  'biomed_BiomedParseData-Demo_demo'    # Add your registered training datasets here
   ]
-  # ['biomed_ACDC_train',
-  # 'biomed_BreastUS_train', 'biomed_CAMUS_train', 'biomed_COVID-QU-Ex_train', 
-  # 'biomed_CXR_Masks_and_Labels_train', 'biomed_FH-PS-AOP_train', 'biomed_G1020_train', 'biomed_GlaS_train', 'biomed_PanNuke_train', 
-  # 'biomed_ISIC_train', 'biomed_LGG_train', 'biomed_LIDC-IDRI_train', 'biomed_MMs_train', 
-  # 'biomed_MSD-Task01_BrainTumour_train', 'biomed_MSD-Task02_Heart_train', 'biomed_MSD-Task03_Liver_train', 
-  # 'biomed_MSD-Task04_Hippocampus_train', 'biomed_MSD-Task05_Prostate_train', 'biomed_MSD-Task06_Lung_train', 
-  # 'biomed_MSD-Task07_Pancreas_train', 'biomed_MSD-Task08_HepaticVessel_train', 'biomed_MSD-Task09_Spleen_train', 
-  # 'biomed_MSD-Task10_Colon_train', 'biomed_NeoPolyp_train', 'biomed_OCT-CME_train', 'biomed_PROMISE12_train', 
-  # 'biomed_PolypGen_train', 'biomed_QaTa-COV19_train', 'biomed_REFUGE_train', 'biomed_Radiography-COVID_train', 
-  # 'biomed_Radiography-Lung_Opacity_train', 'biomed_Radiography-Normal_train', 'biomed_Radiography-Viral_Pneumonia_train', 
-  # 'biomed_UWaterlooSkinCancer_train', 
-  # 'biomed_amos22-CT_train', 'biomed_amos22-MRI_train', 'biomed_kits23_train', 
-  # 'biomed_LiverUS_train', 'biomed_BTCV-Cervix_train', 'biomed_COVID-19_CT_train', 'biomed_DRIVE_train', 
-  # ]
+
 
 
   TEST:  [
-  'biomed_CXR_Masks_and_Labels_test'
+  'biomed_BiomedParseData-Demo_demo'   # Add your registered test datasets here
   ]
-  # ['biomed_amos22-CT_absent_test', 'biomed_amos22-MRI_absent_test', 'biomed_MSD-Task08_HepaticVessel_absent_test', 'biomed_kits23_absent_test', 
-  #         'biomed_MSD-Task05_Prostate_absent_test', 'biomed_ACDC_absent_test', 'biomed_MSD-Task01_BrainTumour_absent_test', 
-  #         'biomed_MSD-Task04_Hippocampus_absent_test', 'biomed_NeoPolyp_absent_test', 'biomed_PanNuke_absent_test']
-  # ['biomed_ACDC_test', 
-  # 'biomed_BreastUS_test', 'biomed_CAMUS_test', 'biomed_COVID-QU-Ex_test', 
-  # 'biomed_CXR_Masks_and_Labels_test', 'biomed_FH-PS-AOP_test', 'biomed_G1020_test', 'biomed_GlaS_test', 
-  # 'biomed_PanNuke_test', 'biomed_ISIC_test', 'biomed_LGG_test', 'biomed_LIDC-IDRI_test', 'biomed_MMs_test', 
-  # 'biomed_MSD-Task01_BrainTumour_test', 'biomed_MSD-Task02_Heart_test', 'biomed_MSD-Task03_Liver_test', 
-  # 'biomed_MSD-Task04_Hippocampus_test', 'biomed_MSD-Task05_Prostate_test', 'biomed_MSD-Task06_Lung_test', 'biomed_MSD-Task07_Pancreas_test', 
-  # 'biomed_MSD-Task08_HepaticVessel_test', 'biomed_MSD-Task09_Spleen_test', 'biomed_MSD-Task10_Colon_test', 
-  # 'biomed_NeoPolyp_test', 'biomed_OCT-CME_test', 'biomed_PROMISE12_test', 'biomed_PolypGen_test', 
-  # 'biomed_QaTa-COV19_test', 'biomed_REFUGE_test', 'biomed_Radiography-COVID_test', 'biomed_Radiography-Lung_Opacity_test', 
-  # 'biomed_Radiography-Normal_test', 'biomed_Radiography-Viral_Pneumonia_test', 
-  # 'biomed_UWaterlooSkinCancer_test', 
-  # 'biomed_amos22-CT_test', 'biomed_amos22-MRI_test', 'biomed_kits23_test',
-  # 'biomed_BTCV-Cervix_test', 'biomed_COVID-19_CT_test']
-
-  #['biomed_abdominal-US-liver_0', 'biomed_abdominal-US-kidney_0', 'biomed_COVID-19-CT_0', 'biomed_DRIVE_0', 'biomed_FUMPE_0']
-  # ['biomed_BraTS2023small-GLI_test', 'biomed_BraTS2023small-MEN_test', 'biomed_BraTS2023small-MET_test', 
-  # 'biomed_BraTS2023small-SSA_test', 'biomed_BraTS2023small-PED_test']
+  
   CLASS_CONCAT: false
   SIZE_DIVISIBILITY: 32
   PROPOSAL_FILES_TRAIN: []
