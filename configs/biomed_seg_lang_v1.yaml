@@ -30,7 +30,7 @@ PORT: '36873'
 # misc
 LOADER:
   JOINT: True
-  KEY_DATASET: "amos22-CT"
+  KEY_DATASET: ""
   SAMPLE_PROB: "prop"    # sampling probability proportional to data size. Use "equal" for each bach from all datasets
   MIXING_LEVEL: 1    # num of different datasets for batch mixing on each GPU
 

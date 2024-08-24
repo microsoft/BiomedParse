@@ -176,7 +176,7 @@ export PATH=$PATH:data/coco_caption/jre1.8.0_321/bin/
 export PYTHONPATH=$PYTHONPATH:data/coco_caption/
 export OMPI_ALLOW_RUN_AS_ROOT=1
 export OMPI_ALLOW_RUN_AS_ROOT_CONFIRM=1
-export WANDB_KEY=YOUR_WANDB_KEY # Provide your wandb key here
+#export WANDB_KEY=YOUR_WANDB_KEY # Provide your wandb key here
 ```
 
 ### Training Parameters

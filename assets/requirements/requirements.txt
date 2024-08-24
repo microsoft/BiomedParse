@@ -1,6 +1,10 @@
-torch==2.0.1 
-torchvision==0.15.2 
-torchaudio==2.0.2
+# --extra-index-url https://download.pytorch.org/whl/cu124
+# torch
+# torchvision
+# torchaudio
+#torch==2.3.1 #2.0.1 
+#torchvision==0.15.2 
+#torchaudio==2.0.2
 #torch==2.1.0
 #torchvision==0.16.0
 pillow==9.4.0
@@ -25,13 +29,13 @@ cython==3.0.2
 pycocotools==2.0.7
 diffdist==0.1
 pyarrow==13.0.0
-cityscapesscripts==2.2.2
-shapely==1.8.0
+#cityscapesscripts==2.2.2
+#shapely==1.8.0
 scikit-image==0.21.0
 mup==1.0.0
 accelerate==0.23.0
 kornia==0.7.0
 deepspeed==0.10.3
-wandb==0.15.12
+#wandb==0.15.12
 infinibatch==0.1.1
-gradio==3.42.0
+#gradio==3.42.0

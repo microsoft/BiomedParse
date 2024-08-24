@@ -6,8 +6,8 @@ export PATH=$PATH:biomedparse_datasets/coco_caption/jre1.8.0_321/bin/
 export PYTHONPATH=$PYTHONPATH:biomedparse_datasets/coco_caption/
 export OMPI_ALLOW_RUN_AS_ROOT=1
 export OMPI_ALLOW_RUN_AS_ROOT_CONFIRM=1
-export WANDB_KEY=YOUR_WANDB_KEY # Provide your wandb key here
-CUDA_VISIBLE_DEVICES=0,1,2,3 mpirun -n 4 python entry.py train \
+#export WANDB_KEY=YOUR_WANDB_KEY # Provide your wandb key here
+CUDA_VISIBLE_DEVICES=0 mpirun -n 1 python entry.py train \
             --conf_files configs/biomed_seg_lang_v1.yaml \
             --overrides \
             FP16 True \
@@ -18,7 +18,7 @@ CUDA_VISIBLE_DEVICES=0,1,2,3 mpirun -n 4 python entry.py train \
             MODEL.ENCODER.MASK_DIM 512 \
             TEST.BATCH_SIZE_TOTAL 4 \
             TRAIN.BATCH_SIZE_TOTAL 4 \
-            TRAIN.BATCH_SIZE_PER_GPU 1 \
+            TRAIN.BATCH_SIZE_PER_GPU 4 \
             SOLVER.MAX_NUM_EPOCHS 20 \
             SOLVER.BASE_LR 0.00001 \
             SOLVER.FIX_PARAM.backbone False \

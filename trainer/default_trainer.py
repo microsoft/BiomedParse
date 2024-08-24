@@ -12,7 +12,7 @@ import sys
 import importlib
 import json
 import random
-import wandb
+#import wandb
 import logging
 import numpy as np
 import copy
@@ -231,8 +231,8 @@ class DefaultTrainer(UtilsTrainer, DistributedTrainer):
 
         if self.opt.get('EVAL_AT_START', False):
             results = self._eval_on_set(self.save_folder)
-            if self.opt['rank'] == 0 and self.opt['WANDB']:
-                wandb.log(results)
+            # if self.opt['rank'] == 0 and self.opt['WANDB']:
+            #     wandb.log(results)
 
         train_prev_logged_time = datetime.now()
         for epoch in range(self.train_params['start_epoch_idx'], num_epochs):
@@ -271,10 +271,10 @@ class DefaultTrainer(UtilsTrainer, DistributedTrainer):
                         memory = torch.cuda.max_memory_allocated() / MB
 
                         if self.opt['rank'] == 0:
-                            if self.opt['WANDB']:
-                                # log for wandb
-                                wb_loss_info = {key: obj.val for key, obj in self.train_loss.losses.items()}
-                                wandb.log(wb_loss_info, step=self.prev_optim_steps)
+                            # if self.opt['WANDB']:
+                            #     # log for wandb
+                            #     wb_loss_info = {key: obj.val for key, obj in self.train_loss.losses.items()}
+                            #     wandb.log(wb_loss_info, step=self.prev_optim_steps)
 
                             # log for terminal
                             logger.info(f"epochs[{epoch:6}] optim steps[{current_optim_steps:.0f}] "
@@ -293,8 +293,8 @@ class DefaultTrainer(UtilsTrainer, DistributedTrainer):
                     if self.opt.get('SAVE_CHECKPOINT', True):
                         self.save_checkpoint(self.train_params['num_updates'])
                     results = self._eval_on_set(self.save_folder)
-                    if self.opt['rank'] == 0 and self.opt['WANDB']:
-                        wandb.log(results)
+                    # if self.opt['rank'] == 0 and self.opt['WANDB']:
+                    #     wandb.log(results)
                     break
 
             logger.info(f"This epoch takes {datetime.now() - epoch_start_time}")
