@@ -3,6 +3,25 @@
 
 ## Installation
 
+### Conda Environment Setup
+Create a new conda environment
+```sh
+conda create -n biomedparse python=3.9
+conda activate biomedparse
+```
+
+Install Pytorch
+```sh
+conda install pytorch torchvision torchaudio pytorch-cuda=12.4 -c pytorch -c nvidia
+```
+In case there is issue with detectron2 installation in the following, make sure your pytorch version is compatible with CUDA version on your machine at https://pytorch.org/.
+
+Install dependencies
+```sh
+pip install -r assest/requirements/requirements.txt
+pip install -r assest/requirements/requirements_custom.txt
+```
+
 ### Install Docker
 
 In order to make sure the environment is set up correctly, we use run BiomedParse on a Docker image. Follow these commands to install Docker on Ubuntu:
