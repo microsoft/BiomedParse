@@ -18,8 +18,8 @@ In case there is issue with detectron2 installation in the following, make sure 
 
 Install dependencies
 ```sh
-pip install -r assest/requirements/requirements.txt
-pip install -r assest/requirements/requirements_custom.txt
+pip install -r assets/requirements/requirements.txt
+pip install -r assets/requirements/requirements_custom.txt
 ```
 
 ### Install Docker
