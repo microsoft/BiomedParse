@@ -2,11 +2,20 @@
 :grapes: \[[Read Our arXiv Paper](https://arxiv.org/abs/2405.12971)\] &nbsp; :apple: \[[Check Our Demo](https://microsoft.github.io/BiomedParse/)\]
 
 ## Installation
+```sh
+git clone https://github.com/microsoft/BiomedParse.git
+```
 
 ### Conda Environment Setup
-Create a new conda environment
+#### Option 1: Directly build the conda environment
+Under the project directory, run
 ```sh
-conda create -n biomedparse python=3.9
+conda env create -f environment.yml
+```
+
+#### Option 2: Create a new conda environment from scratch
+```sh
+conda create -n biomedparse python=3.9.19
 conda activate biomedparse
 ```
 
@@ -19,10 +28,9 @@ In case there is issue with detectron2 installation in the following, make sure 
 Install dependencies
 ```sh
 pip install -r assets/requirements/requirements.txt
-pip install -r assets/requirements/requirements_custom.txt
 ```
 
-### Install Docker
+<!-- ### Install Docker
 
 In order to make sure the environment is set up correctly, we use run BiomedParse on a Docker image. Follow these commands to install Docker on Ubuntu:
 
@@ -47,7 +55,7 @@ bash docker/docker_build.sh
 bash docker/docker_run.sh
 bash docker/setup_inside_docker.sh
 source docker/data_env.sh 
-```
+``` -->
 
 ## Dataset Description and Preparation
 

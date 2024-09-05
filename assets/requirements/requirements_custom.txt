@@ -1,6 +1,6 @@
 git+https://github.com/cocodataset/panopticapi.git
 git+https://github.com/openai/CLIP.git
-git+https://github.com/arogozhnikov/einops.git
+#git+https://github.com/arogozhnikov/einops.git
 #git+https://github.com/facebookresearch/detectron2.git
 git+https://github.com/MaureenZOU/detectron2-xyz.git
 #git+https://github.com/openai/whisper.git

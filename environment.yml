@@ -103,11 +103,11 @@ dependencies:
       - antlr4-python3-runtime==4.9.3
       - appdirs==1.4.4
       - black==21.4b2
-      - clip==1.0
+      - open-clip-torch==2.26.1
       - cloudpickle==3.0.0
       - cython==3.0.2
       - deepspeed==0.10.3
-      - detectron2==0.6
+      - git+https://github.com/MaureenZOU/detectron2-xyz.git
       - diffdist==0.1
       - einops==0.8.0
       - ftfy==6.1.1
@@ -129,12 +129,10 @@ dependencies:
       - omegaconf==2.3.0
       - opencv-python==4.8.1.78
       - pandas==2.0.3
-      - panopticapi==0.1
       - pathspec==0.12.1
       - pillow==9.4.0
       - portalocker==2.10.1
       - py-cpuinfo==9.0.0
-      - pyarrow==13.0.0
       - pycocotools==2.0.7
       - pydantic==1.10.18
       - pydot==3.0.1
