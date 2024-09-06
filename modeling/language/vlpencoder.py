@@ -14,7 +14,7 @@ from timm.models.layers import trunc_normal_
 from .build import register_model
 from ..utils import configurable
 from .LangEncoder import build_tokenizer, build_lang_encoder
-from utils.prompt_engineering import prompt_engineering, get_prompt_templates
+from utilities.prompt_engineering import prompt_engineering, get_prompt_templates
 
 from transformers import AutoTokenizer, AutoModel
 

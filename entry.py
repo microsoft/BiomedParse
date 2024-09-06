@@ -13,7 +13,7 @@ import logging
 import random
 import numpy as np
 
-from utils.arguments import load_opt_command
+from utilities.arguments import load_opt_command
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)

@@ -3,9 +3,9 @@ import torch
 import argparse
 from modeling.BaseModel import BaseModel
 from modeling import build_model
-from utils.distributed import init_distributed
-from utils.arguments import load_opt_from_config_files
-from utils.constants import BIOMED_CLASSES
+from utilities.distributed import init_distributed
+from utilities.arguments import load_opt_from_config_files
+from utilities.constants import BIOMED_CLASSES
 
 from inference_utils.inference import interactive_infer_image
 

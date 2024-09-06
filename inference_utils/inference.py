@@ -8,7 +8,7 @@ from torchvision import transforms
 # from detectron2.data import MetadataCatalog
 # from detectron2.structures import BitMasks
 from modeling.language.loss import vl_similarity
-from utils.constants import BIOMED_CLASSES
+from utilities.constants import BIOMED_CLASSES
 #from detectron2.data.datasets.builtin_meta import COCO_CATEGORIES
 
 # import cv2
