@@ -48,7 +48,7 @@ from .evaluation import (InstanceSegEvaluator,
                          InteractiveEvaluator,
 )
 from modeling.utils import configurable
-from utils.distributed import get_world_size
+from utilities.distributed import get_world_size
 
 class JointLoader(torchdata.IterableDataset):
     """

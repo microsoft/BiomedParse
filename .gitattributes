@@ -1,0 +1,2 @@
+*.json filter=lfs diff=lfs merge=lfs -text
+figures/results/all_eval/*.json filter=lfs diff=lfs merge=lfs -text

@@ -3,7 +3,7 @@ from scipy import stats
 import numpy as np
 
 
-target_dist = json.load(open("target_dist.json"))
+target_dist = json.load(open("inference_utils/target_dist.json"))
 
 
 def check_mask_stats(img, mask, modality_type, target):

@@ -30,7 +30,7 @@ from infinibatch import iterators
 from .distributed_trainer import DistributedTrainer
 from .utils.misc import *
 from .utils.serialization import JSONEncoder, filter_jsonable
-from utils.distributed import get_world_size
+from utilities.distributed import get_world_size
 
 logger = logging.getLogger(__name__)
 
