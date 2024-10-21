@@ -26,7 +26,7 @@ scikit-image==0.21.0
 mup==1.0.0
 accelerate==0.23.0
 kornia==0.7.0
-deepspeed==0.10.3
+deepspeed==0.15.1
 #wandb==0.15.12
 infinibatch==0.1.1
 open-clip-torch==2.26.1
