@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en"class="fontawesome-i2svg-active fontawesome-i2svg-complete">
 <head>
-  <meta property="og:title" content= "BiomedParse: a biomedical foundation model for image parsing of everything everywhere all at once">
-  <meta property="og:description" content="A biomedical foundation model for image parsing of everything everywhere all at once">
+  <meta property="og:title" content= "BiomedParse: A foundation model for joint segmentation, detection and recognition of biomedical objects across nine modalities">
+  <meta property="og:description" content="A foundation model for joint segmentation, detection and recognition of biomedical objects across nine modalities">
   <meta property="og:url" content="https://arxiv.org/abs/2405.12971">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="description"
-        content="A biomedical foundation model for image parsing of everything everywhere all at once">
+        content="A foundation model for joint segmentation, detection and recognition of biomedical objects across nine modalities">
   <meta name="keywords" content="BiomedParse">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="SHORTCUT ICON" href="https://c.s-microsoft.com/favicon.ico?v2" type="image/x-icon">
-  <title>BiomedParse: a biomedical foundation model for image parsing of everything everywhere all at once</title>
+  <title>BiomedParse: A foundation model for joint segmentation, detection and recognition of biomedical objects across nine modalities</title>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
@@ -106,7 +106,7 @@
             <span class="author-block"><sup>3</sup>Paul G. Allen School of Computer Science and Engineering, University of Washington </span>
           </div>
           <div class="is-size-6 publication-authors">
-            <span class="author-block"><sup>*</sup> Equal Contribution</span>
+            <span class="author-block"><sup>*</sup> Equal contribution</span>
             <span class="author-block"><sup>¶</sup> Main technical contribution</span> 
             <span class="author-block"><sup>‡</sup> Corresponding authors</span>
             <span class="author-block"><sup>§</sup> Lead contact</span>
@@ -234,7 +234,7 @@
 <section class="section columns_video" id="segmentation" style="display: flex; justify-content: space-between; align-items: center; margin:5%;">
   <!-- Left side: Caption -->
   <div class="text-section col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6" style="padding: 5%;">
-      <h1 style="font-size: 2em;">Everything</h1>
+      <h1 style="font-size: 2em;">Segmentation</h1>
       <p>BiomedParse performs <a href="#" style="color: #6366f1;"><strong>segmentation</strong></a> for organs, abnormalities and cells, accurately following user's prompts. Without any image specific guidance like bounding box or points, BiomedParse outperforms state-of-the-art bounding box methods with text prompts only, across 9 biomedical imaging modalities.</p>
   </div>
 
@@ -248,7 +248,7 @@
 <section class="section columns_video" id="detection" style="display: flex; justify-content: space-between;align-items: center; margin:5%;">
   <!-- left be caption and right be video -->
   <div class="text-section col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6" style="padding: 5%;">
-    <h1 style="font-size: 2em;">Everywhere</h1>
+    <h1 style="font-size: 2em;">Detection</h1>
     <p>BiomedParse <a href="#" style="color: #6366f1;""><strong>detects</strong></a> the specific object of interest, and locate it at pixel-level precision, even for objects with irregular shapes. By effectively identifying text prompts describing object that does not exist in the image, BiomedParse is capable of object detection in an end-to-end manner.</p>
 </div>
 <div class="video-section col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
@@ -262,7 +262,7 @@
   <section class="section columns_video" id="recognition" style="display: flex; justify-content: space-between; align-items: center; margin:5%;">
     <!-- left be caption and right be video -->
     <div class="text-section col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6" style="padding: 5%;">
-      <h1 style="font-size: 2rem;">All at Once</h1>
+      <h1 style="font-size: 2rem;">Recognition</h1>
       <p>Tired of typing prompts for every objects? BiomedParse can do object <a href="#" style="color: #6366f1;"><strong>recognition</strong></a> all at once. Having learned 82 object types, BiomedParse can automatically identify all objects in a given image along with their semantic types, and simultaneously segment and label all biomedical objects of interests.</p>
     </div>
     <div class="video-section col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
@@ -699,7 +699,7 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
 
-          <p>Biomedical image analysis is fundamental for biomedical discovery in cell biology, pathology, radiology, and many other biomedical domains. Holistic image analysis comprises interdependent subtasks such as segmentation, detection, and recognition of relevant objects. Traditionally, these tasks are tackled separately. For example, there have been a lot of works focusing on segmentation alone, completely ignoring key semantic information in downstream tasks of detection and recognition. In contrast, image parsing is a unifying framework that jointly pursues these tasks by leveraging their interdependencies such as the semantic label of a segmented object. Here, we propose BiomedParse, a biomedical foundation model for imaging parsing that can jointly conduct segmentation, detection, and recognition for 82 object types across 9 imaging modalities. Through joint learning, we can improve accuracy for individual tasks and enable novel applications such as segmenting all relevant objects in an image through a text prompt, rather than requiring users to laboriously specify the bounding box for each object. Interestingly, we can train BiomedParse using no more than standard segmentation datasets. The key is to leverage readily available natural-language labels or descriptions accompanying those datasets and use GPT-4 to harmonize the noisy, unstructured text information with established biomedical object ontologies. We created a large dataset comprising over six million triples of image, segmentation mask, and textual description. On image segmentation, we showed that BiomedParse is broadly applicable, outperforming state-of-the-art methods on 102,855 test image-mask-label triples across 9 imaging modalities (<strong style="color: #6366f1;"><i>everything</i></strong>). BiomedParse is also able to identify invalid user inputs describing objects that do not exist in the image. On object detection, which aims to locate a specific object of interest, BiomedParse again attained state-of-the-art performance, especially on objects with irregular shapes (<strong style="color: #6366f1;"><i>everywhere</i></strong>). On object recognition, which aims to identify all objects in a given image along with their semantic types, we showed that BiomedParse can simultaneously segment and label all biomedical objects in an image (<strong style="color: #6366f1;"><i>all at once</i></strong>). In summary, BiomedParse is an all-in-one tool for biomedical image analysis by jointly solving segmentation, detection, and recognition. It is broadly applicable to all major biomedical image modalities, paving the path for efficient and accurate image-based biomedical discovery. </p>
+          <p>Biomedical image analysis is fundamental for biomedical discovery. Holistic image analysis comprises interdependent subtasks such as segmentation, detection and recognition, which are tackled separately by traditional approaches. Here, we propose BiomedParse, a biomedical foundation model that can jointly conduct segmentation, detection and recognition across nine imaging modalities. This joint learning improves the accuracy for individual tasks and enables new applications such as segmenting all relevant objects in an image through a textual description. To train BiomedParse, we created a large dataset comprising over 6 million triples of image, segmentation mask and textual description by leveraging natural language labels or descriptions accompanying existing datasets. We showed that BiomedParse outperformed existing methods on image segmentation across nine imaging modalities, with larger improvement on objects with irregular shapes. We further showed that BiomedParse can simultaneously segment and label all objects in an image. In summary, BiomedParse is an all-in-one tool for biomedical image analysis on all major image modalities, paving the path for efficient and accurate image-based biomedical discovery. </p>
         </div>
       </div>
     </div>
