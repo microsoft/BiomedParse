@@ -53,7 +53,7 @@ mkdir pretrained
 ```
 Step 2. Download model checkpoint and put the model in the pretrained folder when running the code. Change file name to biomed_parse.pt
 
-Expect future updates of the model as we are making it more robust and powerful based on feedbacks from the community. We recomment using the latest version of the model.
+Expect future updates of the model as we are making it more robust and powerful based on feedback from the community. We recommend using the latest version of the model.
 
 ## Running Inference with BiomedParse
 
@@ -128,7 +128,7 @@ Detection and recognition inference code are provided in `inference_utils/output
 - `combine_masks()`: Combines predictions for non-overlapping masks.
 
 ## Finetune on Your Own Data
-While BiomedParse can take in arbitrary image and text prompt, it can only reasonably segment the targets that it has learned during pretraining! If you have a specific segmentation task that the latest checkpint doesn't do well, here is the instruction on how to finetune it on your own data.
+While BiomedParse can take in arbitrary image and text prompt, it can only reasonably segment the targets that it has learned during pretraining! If you have a specific segmentation task that the latest checkpoint doesn't do well, here is the instruction on how to finetune it on your own data.
 
 ### Raw Image and Annotation
 BiomedParse expects images and ground truth masks in 1024x1024 PNG format. For each dataset, put the raw image and mask files in the following format
