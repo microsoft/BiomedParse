@@ -9,7 +9,7 @@ timm==0.4.12
 numpy==1.26.4
 einops==0.8.0
 fvcore==0.1.5.post20221221
-transformers==4.34.0
+transformers==4.50.0
 sentencepiece==0.1.99
 ftfy==6.1.1
 regex==2023.10.3
