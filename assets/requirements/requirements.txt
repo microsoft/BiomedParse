@@ -22,7 +22,7 @@ timm==0.9.16
 
 # Training stack
 deepspeed==0.14.2
-transformers==4.40.0
+transformers==4.53.0
 open-clip-torch==2.26.1
 sentencepiece==0.2.0
 kornia==0.7.3
