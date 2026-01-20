@@ -188,7 +188,7 @@ python -m azureml.acft.image.components.olympus.app.main \
 Want to improve performance for your specific tasks? Here is a detailed instruction for end-to-end finetuning on your own data: [FINETUNING](assets/readmes/FINETUNING.md)
 
 ## Recommended Preprocessing (Important!)
-BiomedParse v2 training covered five commonly used 3D biomedical image modalities: CT, MR, PET, Ultrasound, and Microscopy. It is important to preprocess the inference images the same as in model training to achieve reasonable performance. Please process all images to npz format with an intensity range of [0, 255]. Specifically, for CT images, please normalize the Hounsfield units using typical window width and level values: 
+BiomedParse v2 training covered five commonly used 3D biomedical image modalities: CT, MR, PET, Ultrasound, and Microscopy. It is important to preprocess the inference images the same as in model training to achieve reasonable performance. Please process all images to npz format with an intensity range of [0, 255]. Specifically, for CT images, please normalize the Hounsfield units using typical window width and level values according to the site/anatomy: 
 - soft tissues (W:400, L:40)
 - lung (W:1500, L:-160)
 - brain (W:80, L:40)
