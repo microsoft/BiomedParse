@@ -10,7 +10,7 @@ from torch.nn.init import xavier_uniform_, constant_, uniform_, normal_
 from torch.cuda.amp import autocast
 
 import fvcore.nn.weight_init as weight_init
-from detectron2.layers import Conv2d, DeformConv, ShapeSpec, get_norm
+from ..d2_compat import Conv2d, ShapeSpec, get_norm
 
 from ..transformer_decoder.transformer import (
     TransformerEncoder,

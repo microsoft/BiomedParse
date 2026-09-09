@@ -5,7 +5,7 @@ from torch import nn, Tensor
 from torch.nn import functional as F
 
 from timm.models.layers import trunc_normal_
-from detectron2.layers import Conv2d
+from ..d2_compat import Conv2d
 import fvcore.nn.weight_init as weight_init
 
 from .attention import MultiheadAttention

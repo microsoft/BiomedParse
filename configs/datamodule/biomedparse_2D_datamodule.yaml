@@ -1,0 +1,23 @@
+defaults:
+  - dataloaders: biomedparse_dataloader
+  - _self_
+
+_target_: azureml.acft.image.components.olympus.core.OlympusDataModule
+split_train_validate: false
+datasets:
+  _target_: azureml.acft.image.components.olympus.core.ModuleDatasets
+  train:
+    _target_: src.datasets.biomedparse_dataset_2D.BiomedParseDataset2D
+    _partial_: true
+    root_dir: ${scratch.data_root}
+    split: train
+    num_prompts: ${scratch.num_prompts}
+    negative_ratio: ${scratch.negative_ratio}
+  validate:
+    _target_: src.datasets.biomedparse_dataset_2D.BiomedParseDataset2D
+    _partial_: true
+    root_dir: ${scratch.data_root}
+    split: ${scratch.validation_split}
+    num_prompts: ${scratch.num_prompts}
+    negative_ratio: 0
+    sampling_seed: 0

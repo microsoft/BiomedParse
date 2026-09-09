@@ -1,0 +1,20 @@
+defaults:
+  - finetune_biomedparse
+  - override datamodule: biomedparse_2D_datamodule
+  - _self_
+
+scratch:
+  data_root: ${mounts.external}/data/YOUR_DATASET
+  negative_ratio: 0.15
+  num_prompts: 4
+  validation_split: test
+
+datamodule:
+  dataloaders:
+    train:
+      batch_size: 1
+    validate:
+      batch_size: 1
+
+model:
+  gray_scale: false

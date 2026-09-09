@@ -1,0 +1,4 @@
+defaults:
+  - biomedparse_3D
+  - _self_
+_target_: src.model.biomedparse_2D.BiomedParseModel

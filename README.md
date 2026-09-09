@@ -19,7 +19,7 @@ Since the publication of BiomedParse, we've been continuously collecting feedbac
 
 Should I use v1 or v2?
 
-Short answer: v2 for the 3D modalities, and v1 for the rest.
+Short answer: use the released v2 weights for 3D modalities and v1 for the rest. For 2D training with the v2 existence classifier, see the [2D guide](assets/readmes/2D.md). Dedicated pretrained 2D weights will be released in the future.
 
 | Version | Image type | Modalities | # tasks | Existence detection |
 |-----|------|------|---------|---------|
@@ -30,6 +30,8 @@ Short answer: v2 for the 3D modalities, and v1 for the rest.
 
 
 ## News
+- Sep. 9, 2026: **Detectron2 is no longer required for BiomedParse v2!** This removes a recurring installation and deployment blocker, while preserving compatibility with the released checkpoint and its predictions.
+- Sep. 9, 2026: **The same v2 architecture is now tailored for 2D segmentation with built-in existence classification.** We provide [2D inference and training/fine-tuning](assets/readmes/2D.md) on your own segmentation data, including automatically generated negative image-prompt pairs. Dedicated pretrained 2D weights will be released in the future.
 - Oct. 15, 2025: BiomedParse v2 release is complete with full support for inference and finetuning! 
 - Jun. 11, 2025: BiomedParse is #1 in the [`CVPR 2025: Foundation Models for Text-guided 3D Biomedical Image Segmentation Challenge`](https://www.codabench.org/competitions/5651/)! We upgraded our model and finetuned on the challenge [`dataset`](https://huggingface.co/datasets/junma/CVPR-BiomedSegFM) with a wider and more comprehensive coverage for 3D biomedical imaging data. Checkout our model in containerized [[`docker image`](https://drive.google.com/file/d/1eUAY1qvEzM0Ut0PA9BGp6gexn5TiFWj8/view?usp=sharing)] for direct inference. Please acknowledge the original challenge if you use this version of the model.
 - Jan. 9, 2025: Refined all object recognition script and added notebook with examples.
@@ -41,7 +43,8 @@ Short answer: v2 for the 3D modalities, and v1 for the rest.
 
 ## Installation
 ```sh
-git clone https://github.com/microsoft/BiomedParse.git
+git clone --branch v2 https://github.com/microsoft/BiomedParse.git
+cd BiomedParse
 ```
 
 ### Conda Environment Setup
@@ -50,17 +53,20 @@ conda create -n biomedparse_v2 python=3.10.14
 conda activate biomedparse_v2
 ```
 
-Install dependencies
+Install inference dependencies (no Detectron2, Azure ML, or DeepSpeed required):
 ```sh
-pip install -r assets/requirements/requirements.txt 
-
-# The above requirements file assumes your environment uses cuda12.4. Adjust accordingly for your system/environment
-
-pip install azureml-automl-core
-pip install opencv-python
-pip install git+https://github.com/facebookresearch/detectron2.git
+python -m pip install -r assets/requirements/inference.txt
 ```
 
+Install the matching PyTorch/torchvision wheels for your hardware first if you need a different CUDA or CPU build. The validated versions are PyTorch 2.6.0 and torchvision 0.21.0.
+
+For Azure ML fine-tuning/evaluation, install the additional training stack:
+```sh
+python -m pip install -r assets/requirements/requirements.txt
+python -m pip install azureml-automl-core opencv-python
+```
+
+The training requirements target CUDA 12.4. The [2D training configuration](configs/finetune_biomedparse_2D.yaml) reuses the existing training pipeline; no separate framework is required.
 
 
 ## Model Weights
@@ -93,7 +99,7 @@ wget https://huggingface.co/microsoft/BiomedParse/resolve/main/biomedparse_v2.ck
 ```
 or
 ```bash
-curl -L -o biomedparse_v2.ckpt https://huggingface.co/microsoft/BiomedParse/resolve/main/biomedparse_v2.ckpt
+curl --fail -L -o biomedparse_v2.ckpt https://huggingface.co/microsoft/BiomedParse/resolve/main/biomedparse_v2.ckpt
 ```
 
 > 💡 **Note:** If the repository is private, log in with your HuggingFace token using:
@@ -105,21 +111,31 @@ curl -L -o biomedparse_v2.ckpt https://huggingface.co/microsoft/BiomedParse/reso
 
 Now you should have the model weights ready for use!
 
+The released v2 checkpoint is approximately 4.46 GB. A tiny text/HTML file is usually a failed download or Git LFS pointer, not model weights. Load only trusted checkpoints and NPZ data. `load_pretrained()` reports missing/unexpected keys instead of silently claiming a complete load; do not ignore those warnings when switching checkpoint architectures.
+
 
 ## Model Inference
 The v2 of BiomedParse supports segmentation of 3D volumes in a slice-by-slice manner, with neighboring 3D context encoded around each slice in RGB format. 
 
-### Inference 3D Examples
+Run on preprocessed challenge-format NPZ volumes:
+
 ```sh
+python inference.py --input_dir examples/imgs --output_dir outputs/3d \
+  --checkpoint /path/to/biomedparse_v2.ckpt --slice_batch_size 4
+```
+
+Omit `--checkpoint` to download/cache the released weights from Hugging Face. Reduce `--slice_batch_size` if GPU memory is limited. Raw DICOM/NIfTI intensities still require modality-appropriate preprocessing; the script does not perform windowing or intensity normalization for raw acquisitions.
+
+### Inference 3D Examples
+```python
 import numpy as np
 import torch
 import torch.nn.functional as F
 import hydra
 from hydra import compose
 from hydra.core.global_hydra import GlobalHydra
-from utils import process_input, process_output, slice_nms
+from utils import process_input, process_output
 from inference import postprocess, merge_multiclass_masks
-from skimage import segmentation
 from huggingface_hub import hf_hub_download
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -170,6 +186,79 @@ print("Processed mask shape:", mask_preds.shape)
 
 Please refer to the [inference notebook](inference_example_3D.ipynb) for more examples.
 
+### Inference 2D Images
+
+Use a compatible fine-tuned checkpoint:
+
+```sh
+python inference_2d.py --image /path/to/preprocessed_slice.png \
+  --prompt "liver" --prompt "right kidney" \
+  --checkpoint /path/to/your_2d_checkpoint.ckpt --output outputs/slice.npz
+```
+
+Inputs are preprocessed 8-bit grayscale or RGB images. The output NPZ contains per-prompt masks at the original image size and existence probabilities. See the [2D guide](assets/readmes/2D.md) for the binary-mask data format, automatic negatives, and training commands.
+
+## Multi-GPU Usage
+
+### Training
+
+Both fine-tuning configurations support single-node distributed training. Add
+`trainer.devices=2` to the training command to use two GPUs, or `trainer.devices=auto`
+to use all visible GPUs. Lightning launches the workers and distributes training
+samples automatically; no separate `torchrun` command is needed for training.
+The default remains one GPU.
+
+```bash
+CUDA_VISIBLE_DEVICES=0,1 python -m azureml.acft.image.components.olympus.app.main \
+  --config-path "$PWD/configs" --config-name finetune_biomedparse_2D \
+  scratch.data_root=/absolute/path/to/YOUR_DATASET \
+  experiment_output_dir=/absolute/path/to/output \
+  olympus_checkpoint.loader.checkpoint_path=/absolute/path/to/compatible_v2.ckpt \
+  trainer.devices=2
+```
+
+Keep the configured `ddp_find_unused_parameters_true` strategy: some model parameters
+do not participate in every training step. Batch size and data-loader workers are
+**per GPU**. Effective training batch size is per-GPU batch size times GPU count
+times gradient accumulation steps (`+trainer.accumulate_grad_batches=4`, for example).
+Each GPU holds a full model and optimizer state; adding GPUs does not pool their
+memory. Adjust batch size, worker count, and learning rate for your workload.
+
+Volume fine-tuning uses a reproducible train/validation split controlled by
+`datamodule.split_seed` (default 0), shared across workers. The 2D configuration
+uses your explicit training and validation manifests instead.
+
+### Inference
+
+Use one worker per visible GPU to distribute independent files:
+
+```bash
+CUDA_VISIBLE_DEVICES=0,1 torchrun --standalone --nproc-per-node=2 inference.py \
+  --input_dir /path/to/volumes --output_dir outputs/3d \
+  --checkpoint /path/to/biomedparse_v2.ckpt --slice_batch_size 4
+
+CUDA_VISIBLE_DEVICES=0,1 torchrun --standalone --nproc-per-node=2 inference_2d.py \
+  --input_dir /path/to/images --output outputs/2d \
+  --prompt "liver" --prompt "right kidney" \
+  --checkpoint /path/to/your_2d_checkpoint.ckpt
+```
+
+Replace `2` with your GPU count, or use `--nproc-per-node=gpu` for all visible GPUs.
+For one GPU, use `python` instead of the `torchrun` launcher. Both modes use the
+same input/output arguments. Input folders are read non-recursively and must remain
+unchanged during the run. Every file is assigned to exactly one worker; excess
+workers exit without loading weights. 2D folder inference applies the same prompts
+to every image and saves `image.png.npz` (retaining the image extension to avoid
+filename collisions). 3D outputs retain the input NPZ filenames.
+
+This increases throughput across files; it does not split one image or volume
+across GPUs. Each GPU must fit the model and its assigned case. For 3D inference,
+`--slice_batch_size` controls the batch size on each worker. Use a fresh output
+folder when you want to preserve earlier results.
+
+Single-GPU DDP training and two-process CPU inference routing have been tested.
+Execution on multiple physical GPUs remains to be verified.
+
 ## Evaluation
 You need to prepare the public model checkpoint and evaluation data under ```<YOUR MODEL AND DATA DIR>``` and put it in `evaluate_biomedparse.yaml` as
 ```yaml
@@ -187,14 +276,7 @@ python -m azureml.acft.image.components.olympus.app.main \
 ## Fine-tuning
 Want to improve performance for your specific tasks? Here is a detailed instruction for end-to-end finetuning on your own data: [FINETUNING](assets/readmes/FINETUNING.md)
 
-## Recommended Preprocessing (Important!)
-BiomedParse v2 training covered five commonly used 3D biomedical image modalities: CT, MR, PET, Ultrasound, and Microscopy. It is important to preprocess the inference images the same as in model training to achieve reasonable performance. Please process all images to npz format with an intensity range of [0, 255]. Specifically, for CT images, please normalize the Hounsfield units using typical window width and level values according to the site/anatomy: 
-- soft tissues (W:400, L:40)
-- lung (W:1500, L:-160)
-- brain (W:80, L:40)
-- bone (W:1800, L:400).
-
-For all other images, clip the intensity values in the range between the 0.5th and 99.5th percentiles. Finally, rescale the intensity values to the range of [0, 255]. If the original intensity range was already in [0, 255], no preprocessing needed.
+For native 2D images, use the [2D training/fine-tuning guide](assets/readmes/2D.md), including annotation-aware automatic negative sampling for the existence classifier.
 
 ## Supported Tasks
 - **CT**: oncology/pathology (adrenocortical carcinoma, kidney lesions/cysts L/R, liver tumors, lung lesions, pancreas tumors, head–neck cancer, colon cancer primaries, COVID-19, whole-body lesion, lymph nodes); thoracic (lungs L/R, lobes LUL/LLL/RUL/RML/RLL, trachea, airway tree); abdomen/pelvis (spleen, liver, gallbladder, stomach, pancreas, duodenum, small bowel, colon, esophagus); GU/endocrine (kidneys L/R, adrenal glands L/R, bladder, prostate, uterus); vascular (aorta/tree, SVC, IVC, pulmonary vein, brachiocephalic trunk, subclavian/carotid arteries L/R, brachiocephalic veins L/R, left atrial appendage, portal/splenic vein, iliac arteries/veins L/R); cardiac (heart); head/neck (carotids L/R, submandibular/parotid/lacrimal glands L/R, thyroid, larynx glottic/supraglottic, lips, buccal mucosa, oral cavity, cervical esophagus, cricopharyngeal inlet, arytenoids, eyeball segments ant/post L/R, optic chiasm, optic nerves L/R, cochleae L/R, pituitary, brainstem, spinal cord); neuro/cranial (brain, skull, Circle of Willis CTA); spine/MSK (sacrum, vertebrae C1–S1, humeri/scapulae/clavicles/femora/hips L/R, gluteus maximus/medius/minimus L/R, autochthon L/R, iliopsoas L/R).

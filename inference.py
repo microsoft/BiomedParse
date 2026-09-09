@@ -5,8 +5,9 @@ import torch
 import torch.nn.functional as F
 import hydra
 from hydra import compose
-from hydra.core.global_hydra import GlobalHydra
 import gc
+from pathlib import Path
+from inference_utils.distributed import inference_worker
 from utils import process_input, process_output, slice_nms
 
 def load_case(file_path):
@@ -60,24 +61,28 @@ def print_memory_info(stage=""):
 
 
 def main(args):
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    device, files = inference_worker(Path(args.input_dir).glob("*.npz"))
+    if not files:
+        return
     print("Using device:", device)
 
-    GlobalHydra.instance().clear()
-    hydra.initialize(config_path="configs", job_name="example_prediction")
-    cfg = compose(config_name="biomedparse_3D")
+    if args.slice_batch_size < 1:
+        raise ValueError("slice_batch_size must be positive.")
+    config_dir = Path(__file__).resolve().parent / "configs/model"
+    with hydra.initialize_config_dir(version_base=None, config_dir=str(config_dir)):
+        cfg = compose(config_name="biomedparse_3D")
     model = hydra.utils.instantiate(cfg, _convert_="object")
-    model.load_pretrained("model_weights/biomedparse_3D_AllData_MultiView_edge.ckpt")
+    checkpoint = args.checkpoint
+    if checkpoint is None:
+        from huggingface_hub import hf_hub_download
+        checkpoint = hf_hub_download("microsoft/BiomedParse", "biomedparse_v2.ckpt")
+    model.load_pretrained(checkpoint)
     model.to(device)
     model.eval()
 
     os.makedirs(args.output_dir, exist_ok=True)
 
-    for file in os.listdir(args.input_dir):
-        if not file.endswith(".npz"):
-            continue
-
-        file_path = os.path.join(args.input_dir, file)
+    for file_path in files:
         print(f"\nProcessing: {file_path}")
 
         npz_data = np.load(file_path, allow_pickle=True)
@@ -100,7 +105,7 @@ def main(args):
         }
 
         with torch.no_grad():
-            output = model(input_tensor, mode="eval", slice_batch_size=4)
+            output = model(input_tensor, mode="eval", slice_batch_size=args.slice_batch_size)
 
         mask_preds = output["predictions"]["pred_gmasks"]
         mask_preds = F.interpolate(
@@ -115,7 +120,7 @@ def main(args):
         mask_preds = merge_multiclass_masks(mask_preds, ids)
         mask_preds = process_output(mask_preds, pad_width, padded_size, valid_axis)
 
-        save_path = os.path.join(args.output_dir, file)
+        save_path = os.path.join(args.output_dir, file_path.name)
         np.savez_compressed(save_path, segs=mask_preds)
 
         # Cleanup
@@ -130,5 +135,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--input_dir", required=True)
     parser.add_argument("--output_dir", required=True)
+    parser.add_argument("--checkpoint", help="Local weights; otherwise download biomedparse_v2.ckpt from Hugging Face.")
+    parser.add_argument("--slice_batch_size", type=int, default=4)
     args = parser.parse_args()
     main(args)

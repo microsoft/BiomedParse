@@ -1,4 +1,6 @@
 ## Preparations
+For native 2D grayscale/RGB images, use the [2D training guide](2D.md), which reuses this training stack and generates negative image-prompt pairs automatically. The instructions below cover the existing 3D-volume fine-tuning workflow.
+
 You need to prepare the public model checkpoint and finetuning data under ```<YOUR MODEL AND DATA DIR>``` and put it in `finetune_biomedparse.yaml` as
 ```yaml
 mounts:

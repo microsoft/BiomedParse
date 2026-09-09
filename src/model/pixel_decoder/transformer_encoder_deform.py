@@ -10,8 +10,7 @@ from torch.nn import functional as F
 from torch.nn.init import xavier_uniform_, constant_, uniform_, normal_
 from torch.cuda.amp import autocast
 
-from detectron2.layers import Conv2d, ShapeSpec, get_norm
-from detectron2.modeling import SEM_SEG_HEADS_REGISTRY
+from ..d2_compat import Conv2d, ShapeSpec, get_norm
 
 from .ops.modules import MSDeformAttn
 from ..transformer_decoder.transformer import _get_clones, _get_activation_fn
@@ -227,7 +226,6 @@ class MSDeformAttnTransformerEncoder(nn.Module):
         return output
 
 
-# @SEM_SEG_HEADS_REGISTRY.register()
 class MSDeformAttnPixelDecoder(nn.Module):
     def __init__(
         self,

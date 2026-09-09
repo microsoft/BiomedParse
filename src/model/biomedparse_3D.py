@@ -6,6 +6,8 @@ from PIL import Image
 import os
 import numpy as np
 import time
+import warnings
+from pathlib import Path
 from safetensors.torch import load_file
 
 def process_multi_prompts(text):
@@ -387,14 +389,31 @@ class BiomedParseModel(nn.Module):
         
     def load_pretrained(self, checkpoint_path):
         """Loads a pretrained checkpoint into the model."""
-        if checkpoint_path.endswith(".safetensors"):
-            state_dict = load_file(checkpoint_path)
+        checkpoint_path = Path(checkpoint_path)
+        if checkpoint_path.stat().st_size < 1024:
+            raise ValueError(
+                f"{checkpoint_path} is too small to be a model checkpoint. "
+                "Check for a failed download or Git LFS pointer and download the weights again."
+            )
+        if checkpoint_path.suffix == ".safetensors":
+            state_dict = load_file(str(checkpoint_path))
         else:
-            checkpoint = torch.load(checkpoint_path, map_location="cpu")
+            checkpoint = torch.load(checkpoint_path, map_location="cpu", weights_only=True)
             state_dict = checkpoint["state_dict"] if "state_dict" in checkpoint else checkpoint
-            state_dict = {
-                k[6:] if k.startswith("model.") else k: v
-                for k, v in state_dict.items()
-            }
-        self.load_state_dict(state_dict, strict=False)
-        print("Checkpoint loaded successfully!")
+        state_dict = {
+            name.removeprefix("model."): value for name, value in state_dict.items()
+        }
+        for name in (
+            "loss_function.loss_fn.dice_loss.class_weight",
+            "loss_function.cls_loss_fn.pos_weight",
+        ):
+            state_dict.pop(name, None)
+        incompatible = self.load_state_dict(state_dict, strict=False)
+        if incompatible.missing_keys or incompatible.unexpected_keys:
+            warnings.warn(
+                f"Checkpoint mismatch: missing={incompatible.missing_keys}, "
+                f"unexpected={incompatible.unexpected_keys}",
+                RuntimeWarning,
+                stacklevel=2,
+            )
+        return incompatible

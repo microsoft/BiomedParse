@@ -14,10 +14,6 @@ import torch.nn.functional as F
 import torch.utils.checkpoint as checkpoint
 from timm.models.layers import DropPath, to_2tuple, trunc_normal_
 
-# from detectron2.utils.file_io import PathManager
-from detectron2.modeling import Backbone
-
-
 logger = logging.getLogger(__name__)
 
 
@@ -700,7 +696,7 @@ class FocalNet(nn.Module):
         self._freeze_stages()
 
 
-class D2FocalNet(FocalNet, Backbone):
+class D2FocalNet(FocalNet):
     def __init__(
         self,
         pretrain_img_size=1600,
