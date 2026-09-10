@@ -3,7 +3,7 @@
 
 # Build tools
 packaging==23.0
-setuptools==65.6.3
+setuptools==78.1.1
 ninja==1.11.1.1
 
 # PyTorch (CUDA 12.4)
