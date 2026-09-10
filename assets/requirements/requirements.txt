@@ -20,7 +20,7 @@ marshmallow==3.23.2
 # Training stack
 deepspeed==0.14.2
 open-clip-torch==2.26.1
-sentencepiece==0.2.0
+sentencepiece==0.2.1
 kornia==0.7.3
 python-dotenv==1.0.1
 
